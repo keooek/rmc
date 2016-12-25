@@ -4,11 +4,11 @@ Before executing this install script please, install the latest full raspbian im
 
 Recommended installation dir /opt/rmc, in case to use default execute:
 
-sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc ; cd /opt/rmc ; ./install.sh
+sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc ; cd /opt/rmc/bin ; ./install.sh
 
-If not execute "git clone https://github.com/keooek/rmc" wherever you want and change settings.sh file in $base to select your custom installation dir.
+If not execute "git clone https://github.com/keooek/rmc" wherever you want and change etc/settings.sh file in $base to select your custom installation dir.
 
 Then execute:
 
-./install.sh
+bin/install.sh
 

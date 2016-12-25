@@ -7,9 +7,9 @@ cd $base
 
 IFS=$'\n'
 date_str="$(date +%Y%m%d-%H_%M_%S)"
-#for j in $(find $base_books -type f -mmin +10 -size -20M -name "*epub") ; do
- #xvfb-run ebook-convert "$j" "$base_books/$(basename "$j" .epub).mobi"
-#done
+for j in $(find $base_books -type f -mmin +10 -size -20M -name "*epub") ; do
+ xvfb-run ebook-convert "$j" "$base_books/$(basename "$j" .epub).mobi"
+done
 for j in $(find $base_books -type f -mmin +10 -size -20M -name "*mobi") ; do
  mpack -s "$(basename $j)" "$j" $kindle_mail > /home/pi/bin/log/mail_books_${date_str}.txt 2>&1
  echo "BOOK $(basename $j) added" | mail -s "BOOK $(basename $j)" $notify_mail

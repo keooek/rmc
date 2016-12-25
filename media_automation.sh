@@ -10,18 +10,6 @@
 # exit 0
 #fi
 
-#Protect files if restarted until them will be downloading again not to move before
-upSeconds="$(cat /proc/uptime | grep -o '^[0-9]\+')"
-upMins=$((${upSeconds} / 60))
-
-#if [ "${upMins}" -lt "12" ]
-#then
- #[[ $(ps ax |grep "hu.tagsoft.ttorrent.pro"|grep -v grep |grep -v grep | awk '{print $1}') ]] && /home/pi/bin/clean_ttorrent_queue.sh
- #if [ -z "$(ps ax |grep "hu.tagsoft.ttorrent.pro"|grep -v grep |grep -v grep | awk '{print $1}')" ]; then /home/pi/bin/clean_ttorrent_queue.sh ; fi
-# exit 0
-#else
-# echo "Up for ${upMins} minutes"
-#fi
 
 #Clean ttorrent queue if all torrents are finished, not when playing kodi
 #[[ $(find /media/data/data/hu.tagsoft.ttorrent.pro/shared_prefs -size +120c -name torrents.xml) && (! $(grep "is_finished&quot;:false" /media/data/data/hu.tagsoft.ttorrent.pro/shared_prefs/torrents.xml)) && (! $(ps -ef |egrep -i '(kodi|videoplayer)'|grep -v grep)) ]] && (/home/pi/bin/clean_ttorrent_queue.sh; rm /media/data/data/hu.tagsoft.ttorrent.pro/files/*fastresume)

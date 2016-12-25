@@ -4,4 +4,4 @@ Install script:
 
 ./install.sh
 
-Enter paramenters
+Enter paramenters:

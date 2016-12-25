@@ -10,12 +10,12 @@ rm /home/pi/.aMule/{muleLock,statistics.dat}
 nohup /usr/bin/amuled &
 
 killall transmission-daemon
-/usr/bin/transmission-daemon -g /etc/transmission-daemon --log-debug -e /home/pi/logs/transmission.log
+/usr/bin/transmission-daemon -g /etc/transmission-daemon --log-debug -e $logs/transmission.log
 
 sleep 30
-#/home/pi/bin/forever_qbittorrent.sh
-nohup /home/pi/bin/forever_amule.sh &
-nohup /home/pi/bin/forever_transmission.sh &
+#$base_bin/forever_qbittorrent.sh
+nohup $base_bin/forever_amule.sh &
+nohup $base_bin/forever_transmission.sh &
 #bash -ic "pok"
 
 #/etc/init.d/transmission-daemon start

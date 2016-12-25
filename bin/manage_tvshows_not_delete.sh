@@ -9,8 +9,8 @@ action=$1
 language=$2
 shift 2
 tvshow=$*
-file_en="/home/pi/bin/tvshows_en_not_delete.txt"
-file_sp="/home/pi/bin/tvshows_sp_not_delete.txt"
+file_en="$base_bin/tvshows_en_not_delete.txt"
+file_sp="$base_bin/tvshows_sp_not_delete.txt"
 
 echo $action $language $tvshow
  

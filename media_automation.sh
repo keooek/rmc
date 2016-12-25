@@ -11,6 +11,7 @@
 #fi
 
 
+
 #Clean ttorrent queue if all torrents are finished, not when playing kodi
 #[[ $(find /media/data/data/hu.tagsoft.ttorrent.pro/shared_prefs -size +120c -name torrents.xml) && (! $(grep "is_finished&quot;:false" /media/data/data/hu.tagsoft.ttorrent.pro/shared_prefs/torrents.xml)) && (! $(ps -ef |egrep -i '(kodi|videoplayer)'|grep -v grep)) ]] && (/home/pi/bin/clean_ttorrent_queue.sh; rm /media/data/data/hu.tagsoft.ttorrent.pro/files/*fastresume)
 

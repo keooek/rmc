@@ -24,5 +24,5 @@ lsA="$(ls -A $base_hd_input/SKIPPED)"
 #cd /opt/share/filebot/bin; ./filebot.sh -get-missing-subtitles --lang en --log all --log-file $logs/tvshowsen_subs_$(date +%Y%m%d-%H_%M_%S).txt $base_hd_output/TVSHOWS-EN/Justified/T6/
 mv $base_hd_input/TVSHOWS-EN/* $base_hd_input/SKIPPED/
 if [[ "$(grep MOVE $logs/tvshowsen_rename_${date_str}.txt)" == *MOVE* ]] ; then
- curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://192.168.1.7:8080/jsonrpc
+ curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://$kodi_ip/jsonrpc
 fi

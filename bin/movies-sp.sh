@@ -18,5 +18,5 @@ lsA="$(ls -A $base_hd_input/SKIPPED)"
 ( egrep -i '(MOVE|Skipped)' $logs/moviessp_rename_${date_str}.txt; echo "SKIPPED"; ls -1rt $base_hd_input/SKIPPED; ) | mail -s "$(egrep -i '(MOVE|Skipped)' $logs/moviessp_rename_${date_str}.txt| wc -l)-$([[ $lsA ]] && echo "SK-")MV-SP $(basename "$j")" $notify_mail
 mv $base_hd_input/MOVIES-SP/* $base_hd_input/SKIPPED
 if [[ "$(grep MOVE $logs/moviessp_rename_${date_str}.txt)" == *MOVE* ]] ; then
- curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://192.168.1.7:8080/jsonrpc
+ curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://$kodi_ip/jsonrpc
 fi

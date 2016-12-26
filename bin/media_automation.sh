@@ -45,8 +45,6 @@ mv -vf $base_hd_input/ALL/* $base_hd_input/SKIPPED
 [[ $(find $base_hd_input/TVSHOWS-SP -type f -size +100M) ]] && $base_bin/tvshows-sp.sh
 [[ $(find $base_hd_input/MOVIES-SP -type f -size +150M) ]] && $base_bin/movies-sp.sh
 [[ $(find $base_hd_input/BOOKS -type f -size -20M ) ]] && $base_bin/books.sh
-#[[ $(find $base_hd_input/BOOKS -type f -mmin +10 -size -20M ) ]] && $base_bin/books.sh
-#[[ $(ls -A $base_hd_input/MOVIES-SP ) || $(ls -A $base_hd_input/AMULE ) ]] && $base_bin/movies-sp.sh
 
 find $logs -type f -mtime +5 -exec rm {} \;
 find /home/pi/.flexget/log -mtime +15 -exec rm {} \;

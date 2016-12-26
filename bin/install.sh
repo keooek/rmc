@@ -29,9 +29,9 @@ sudo chown pi:pi /var/lib/transmission-daemon
 
 sudo apt-get -y install amule amule-daemon
 
-sudo apt-get autoremove
+sudo apt-get -y autoremove
 
 sudo rpi-update
 
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
-sudo /bin/su -c "echo "export PATH='$base/sw/filebot:$PATH'" >> ~/.profile
+[ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile

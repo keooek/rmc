@@ -1,3 +1,4 @@
+#!/bin/bash -xv
 echo [[ -s "/opt/rmc/etc/media-center-config" ]] && source "/opt/rmc/etc/media-center-config"" >> ~/.bashrc
 
 sudo mkdir $base ; sudo chown pi:pi $base

@@ -21,7 +21,6 @@ flexget -V
 cd $base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 unxz FileBot.jar.xz
-rm FileBot.jar.xz
 
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
@@ -29,6 +28,8 @@ sudo systemctl disable transmission-daemon
 sudo chown pi:pi /var/lib/transmission-daemon
 
 sudo apt-get -y install amule amule-daemon
+
+sudo apt-get autoremove
 
 sudo rpi-update
 

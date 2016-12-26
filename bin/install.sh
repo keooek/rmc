@@ -18,7 +18,10 @@ sudo apt-get -y install kodi
 sudo pip install flexget
 flexget -V
 
-cd $base/sw/filebot ; wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
+cd $base/sw/filebot 
+wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
+tar xJvf FileBot.jar.xz
+rm FileBot.jar.xz
 
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop

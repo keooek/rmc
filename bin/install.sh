@@ -34,3 +34,4 @@ sudo apt-get autoremove
 sudo rpi-update
 
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
+sudo /bin/su -c "echo "export PATH='$base/sw/filebot:$PATH'" >> ~/.profile

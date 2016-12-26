@@ -16,8 +16,8 @@
 find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
 #Books
 find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $base_hd_input/BOOKS \;
-#XXX
-find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(XXX\|xxx\|anal\|Porno\|porno\|DAP|\Anal\).*' -exec mv -vf {} $base_hd_input/OTHERS \;
+#Custom
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\($others_filter\).*' -exec mv -vf {} $base_hd_input/OTHERS \;
 #MP3
 find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $base_hd_input/MP3 \;
 #PS3

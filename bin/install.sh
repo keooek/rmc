@@ -10,22 +10,22 @@ mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS S
 mkdir -p $base/sw/flexget $base/log $base/tmp
 
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get dist-upgrade
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
 
-sudo apt-get install kodi
+sudo apt-get -y install kodi
 
 sudo pip install flexget
 flexget -V
 
 cd $base/sw/filebot ; wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 
-sudo apt-get install transmission-daemon
+sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
 sudo systemctl disable transmission-daemon
 sudo chown pi:pi /var/lib/transmission-daemon
 
-sudo apt-get install amule amule-daemon
+sudo apt-get -y install amule amule-daemon
 
 sudo rpi-update
 

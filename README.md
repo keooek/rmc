@@ -16,13 +16,11 @@ Recommended installation dir /opt/rmc, in case to use default execute:
 
 sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc 
 
-Before install modify the /opt/rmc/templates/media-center-config.template
+Before install modify the /opt/rmc/templates/media-center-config.template, then copy to:
+cp media-center-config.template ../etc/media-center-config
+
+Then install:
 
 cd /opt/rmc/bin ; ./install.sh
 
-If not execute "git clone https://github.com/keooek/rmc" wherever you want and change templates/media-center-config.template file in $base to select your custom installation dir.
-
-Then execute:
-
-bin/install.sh
 

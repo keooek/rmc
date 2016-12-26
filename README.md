@@ -1,7 +1,7 @@
 # rmc
 
-Before executing this install script please, install the latest full raspbian image from https://www.raspberrypi.org/downloads/raspbian/
-Configure network settings (recommended ethernet connection), enable ssh service.
+Please, install the latest full raspbian image from https://www.raspberrypi.org/downloads/raspbian/
+Configure network settings with static ip (recommended ethernet connection), enable ssh service.
 
 Recommended installation dir /opt/rmc, in case to use default execute:
 

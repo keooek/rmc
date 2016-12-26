@@ -5,3 +5,19 @@ apt-get update
 apt-get upgrade
 apt-get dist-upgrade
 apt-get install openjdk-8-jdk
+
+wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
+
+sudo apt-get install python3.5
+sudo apt-get install python-pip
+sudo pip install --upgrade setuptools
+sudo pip install virtualenv
+virtualenv --system-site-packages $base_sw/flexget/
+cd $base_sw 
+bin/pip install flexget
+#source $base_sw/flexget/bin/activate
+~/flexget/bin/flexget params para cron
+
+sudo apt-get install transmission-daemon
+
+sudo apt-get install amule amule-daemon

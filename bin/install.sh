@@ -1,9 +1,11 @@
 #!/bin/bash -xv
-[[ -s "/opt/rmc/etc/media-center-config" ]] && echo 'source /opt/rmc/etc/media-center-config' >> ~/.bashrc ; source /opt/rmc/etc/media-center-config
+[[ ! -s "/opt/rmc/etc/media-center-config" ]] && echo "/opt/rmc/etc/media-center-config must exist to continue, please, fill up the corresponding template"
+[[ -z "$(grep media-center-config ~/.bashrc)" ]] && echo "source /opt/rmc/etc/media-center-config" >> ~/.bashrc 
+source /opt/rmc/etc/media-center-config
 
-sudo mkdir $base 
-sudo chown pi:pi $base
-mkdir -p $base_hd_input ; cd $base_hd_input
+sudo mkdir -p $base_hd_input 
+sudo chown pi:pi $base_hd_input
+cd $base_hd_input
 mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
 mkdir -p $base/sw/flexget $base/log $base/tmp
 

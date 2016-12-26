@@ -1,28 +1,28 @@
-# Before executing this script please, install the latest full raspbian image from https://www.raspberrypi.org/downloads/raspbian/
-#[ -e $base_etc/media-center-config ] && source ./settings.sh ; sudo mkdir $base ; sudo chown pi:pi $base ; echo "source $base_etc/media-center-config" >> ~/.bashrc
-#[ ! -e ./settings.sh  ] && sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc ; cd /opt/rmc
+echo [[ -s "/opt/rmc/etc/media-center-config" ]] && source "/opt/rmc/etc/media-center-config"" >> ~/.bashrc
 
-mkdir -p $base_hd_input
-cd $base_hd_input
-mkdir ALL  AMULE  AMULE_TMP  BOOKS  BOOKS_PROCESSED  MOVIES-EN  MOVIES-SP  MP3  OTHERS  PS3  SHARE  SKIPPED  TORRENT_INCOMING  TORRENT_TMP  TVSHOWS-EN  TVSHOWS-SP
+sudo mkdir $base ; sudo chown pi:pi $base
+mkdir -p $base_hd_input ; cd $base_hd_input
+mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
+mkdir -p $base/sw/flexget $base/log $base/tmp
 
-apt-get update
-apt-get upgrade
-apt-get dist-upgrade
-apt-get install openjdk-8-jdk
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
 
-wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
+sudo apt-get install kodi
 
-sudo apt-get install python3.5
-sudo apt-get install python-pip
-sudo pip install --upgrade setuptools
-sudo pip install virtualenv
-virtualenv --system-site-packages $base_sw/flexget/
-cd $base_sw 
-bin/pip install flexget
-#source $base_sw/flexget/bin/activate
-~/flexget/bin/flexget params para cron
+sudo pip install flexget
+flexget -V
+
+cd $base/sw/filebot ; wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 
 sudo apt-get install transmission-daemon
+sudo service transmission-daemon stop
+sudo systemctl disable transmission-daemon
+sudo chown pi:pi /var/lib/transmission-daemon
 
 sudo apt-get install amule amule-daemon
+
+sudo rpi-update
+
+[ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"

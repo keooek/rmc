@@ -13,30 +13,30 @@
 
 #Reorg downloaded mixed torrents in ALL y AMULE folder
 #TVShows EN
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
 #Books
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $base_hd_input/BOOKS \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $base_hd_input/BOOKS \;
 #XXX
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*\(XXX\|xxx\|anal\|Porno\|porno\|DAP|\Anal\).*' -exec mv -vf {} $base_hd_input/OTHERS \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(XXX\|xxx\|anal\|Porno\|porno\|DAP|\Anal\).*' -exec mv -vf {} $base_hd_input/OTHERS \;
 #MP3
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $base_hd_input/MP3 \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $base_hd_input/MP3 \;
 #PS3
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $base_hd_input/PS3 \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $base_hd_input/PS3 \;
 #TVShows SP
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*[0-2]?[0-9]x[0-2][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*[Cc]ap.*[^0-9][0-9]x?[0-2][0-9][^0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*[^0-9][0-9]x*[0-2][0-9][^0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
-#find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*[^0-9][0-9]x?[0-2][0-9][^0-9].*' -exec mv {} $base_hd_input/TVSHOWS-SP \;
-#find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*emporada.*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[0-2]?[0-9]x[0-2][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[Cc]ap.*[^0-9][0-9]x?[0-2][0-9][^0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[^0-9][0-9]x*[0-2][0-9][^0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
+#find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*[^0-9][0-9]x?[0-2][0-9][^0-9].*' -exec mv {} $base_hd_input/TVSHOWS-SP \;
+#find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*emporada.*' -exec mv -vf {} $base_hd_input/TVSHOWS-SP \;
 #TVShows EN
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*S[0-3][0-9]E[0-3][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*eason.*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*S[0-3][0-9]E[0-3][0-9].*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*eason.*' -exec mv -vf {} $base_hd_input/TVSHOWS-EN \;
 #Movies ES
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*\(panish\|astellano\|spa.ol\|PANISH\|ASTELLANO\|SPA.OL\).*' -exec mv -vf {} $base_hd_input/MOVIES-SP \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(panish\|astellano\|spa.ol\|PANISH\|ASTELLANO\|SPA.OL\).*' -exec mv -vf {} $base_hd_input/MOVIES-SP \;
 #Movies EN
-find $base_hd_input/ALL /media/MULTIMEDIA/AMULE -maxdepth 1 -regex '.*\(1080p\|720p\).*' -exec mv -vf {} $base_hd_input/MOVIES-EN \;
+find $base_hd_input/ALL $base_hd_input/AMULE -maxdepth 1 -regex '.*\(1080p\|720p\).*' -exec mv -vf {} $base_hd_input/MOVIES-EN \;
 #If not match move to SKIPPED
-mv -vf /media/MULTIMEDIA/AMULE/* $base_hd_input/SKIPPED
+mv -vf $base_hd_input/AMULE/* $base_hd_input/SKIPPED
 mv -vf $base_hd_input/ALL/* $base_hd_input/SKIPPED
 
 #Filebot processing
@@ -46,7 +46,7 @@ mv -vf $base_hd_input/ALL/* $base_hd_input/SKIPPED
 [[ $(find $base_hd_input/MOVIES-SP -type f -size +150M) ]] && $base_bin/movies-sp.sh
 [[ $(find $base_hd_input/BOOKS -type f -size -20M ) ]] && $base_bin/books.sh
 #[[ $(find $base_hd_input/BOOKS -type f -mmin +10 -size -20M ) ]] && $base_bin/books.sh
-#[[ $(ls -A $base_hd_input/MOVIES-SP ) || $(ls -A /media/MULTIMEDIA/AMULE ) ]] && $base_bin/movies-sp.sh
+#[[ $(ls -A $base_hd_input/MOVIES-SP ) || $(ls -A $base_hd_input/AMULE ) ]] && $base_bin/movies-sp.sh
 
 find $logs -type f -mtime +5 -exec rm {} \;
 find /home/pi/.flexget/log -mtime +15 -exec rm {} \;

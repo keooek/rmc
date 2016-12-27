@@ -8,7 +8,8 @@ sudo chown pi:pi $base_hd_input
 cd $base_hd_input
 mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
 mkdir -p $base/sw/flexget $base/log $base/tmp
-mkdir -p $base_hd_output
+sudo mkdir -p $base_hd_output
+sudo chown pi:pi $base_hd_output
 cd $base_hd_output
 mkdir MOVIES-3D-EN MOVIES-3D-SP MOVIES-EN MOVIES-OLD-EN MOVIES-OLD-SP MOVIES-SP TVSHOWS-EN TVSHOWS-SP YOUTUBE-MUSIC
 

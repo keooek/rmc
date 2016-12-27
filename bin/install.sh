@@ -36,7 +36,7 @@ sudo rpi-update
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
 [ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile
 
-mkdir -p ~/.aMule/amule.conf
+mkdir -p ~/.aMule
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp

@@ -25,7 +25,7 @@ unxz FileBot.jar.xz
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
 sudo systemctl disable transmission-daemon
-sudo chown pi:pi /var/lib/transmission-daemon
+sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 
 sudo apt-get -y install amule amule-daemon
 

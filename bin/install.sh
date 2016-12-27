@@ -35,3 +35,18 @@ sudo rpi-update
 
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
 [ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile
+
+cd $base 
+cp templates/transmission_settings.json.template etc/transmission_settings.json
+cp templates/amule.conf.template ~/.aMule/amule.conf
+env|grep "rmc_"|sed 's/rmc_//' > tmp/trans.tmp
+while read line ; do
+ escaped_tmp=$(echo $line | cut -d'=' -f2)
+ echo $escaped_tmp
+ escaped=$(echo $escaped_tmp|sed 's/\//\\\//g')
+ echo $escaped
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" etc/transmission_settings.json
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
+done < tmp/templates.tmp
+
+#sudo reboot

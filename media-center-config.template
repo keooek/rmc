@@ -1,5 +1,5 @@
 export base_port=10000
-export base="/opt/rmc"
+export base="/home/pi/bin/rmc"
 export base_bin="$base/bin"
 export base_etc="$base/etc"
 export base_tmp="$base/tmp"

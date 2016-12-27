@@ -56,6 +56,10 @@ done < $base/tmp/templates.tmp
 
 
 cp ~/.aMule/amule.conf $base_sw/amule
+cd ~/aMule
+wget http://upd.emule-security.org/nodes.dat
+wget http://upd.emule-security.org/server.met
+
 
 cp $base/etc/transmission_settings.json $base_sw/transmission/settings.json
 sudo apt-get -y --purge remove transmission-daemon

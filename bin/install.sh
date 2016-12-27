@@ -8,6 +8,16 @@ sudo chown pi:pi $base_hd_input
 cd $base_hd_input
 mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
 mkdir -p $base/sw/flexget $base/log $base/tmp
+mkdir -p $base_hd_output
+cd $base_hd_output
+mkdir MOVIES-3D-EN MOVIES-3D-SP MOVIES-EN MOVIES-OLD-EN MOVIES-OLD-SP MOVIES-SP TVSHOWS-EN TVSHOWS-SP YOUTUBE-MUSIC
+
+a="pi hard nofile 16384"; b="/etc/security/limits.conf" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="pi soft nofile 8192"; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="vm.min_free_kbytes = 32768"; b="/etc/sysctl.conf" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="net.core.rmem_max = 4194304" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="net.core.wmem_max = 1048576" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+#smsc95xx.turbo_mode=N in /boot/cmdline.txt
 
 sudo apt-get update
 sudo apt-get -y upgrade

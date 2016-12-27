@@ -23,4 +23,7 @@ export rmc_transmission_in="$base_hd_input/TORRENT_INCOMING"
 export rmc_transmission_ppeer=$base_port
 export rmc_transmission_prcp=$(( $base_port + 1))
 export rmc_transmission_pass="ClaveTrans1"
-
+#Amule
+export AMULE_USER=pi
+export AMULE_HOME=$base_sw/amule
+export AMULED_HOME=$base_sw/amule

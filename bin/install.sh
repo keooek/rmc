@@ -49,6 +49,8 @@ while read line ; do
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
 done < $base/tmp/templates.tmp
 
+cp ~/.aMule/amule.conf &base_sw/amule/
+
 sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop

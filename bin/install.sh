@@ -50,7 +50,7 @@ while read line ; do
 done < $base/tmp/templates.tmp
 
 
-cp ~/.aMule/amule.conf $base_sw/
+cp ~/.aMule/amule.conf $base_sw/amule
 
 cp $base/etc/transmission_settings.json $base_sw/transmission/settings.json
 sudo apt-get -y --purge remove transmission-daemon

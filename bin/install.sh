@@ -39,7 +39,7 @@ sudo rpi-update
 mkdir -p ~/.aMule/amule.conf
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
-env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/trans.tmp
+env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
  escaped_tmp=$(echo $line | cut -d'=' -f2)
  echo $escaped_tmp

@@ -56,7 +56,7 @@ done < $base/tmp/templates.tmp
 
 
 cp ~/.aMule/amule.conf $base_sw/amule
-cd ~/aMule
+cd ~/.aMule
 wget http://upd.emule-security.org/nodes.dat
 wget http://upd.emule-security.org/server.met
 

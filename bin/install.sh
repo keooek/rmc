@@ -79,4 +79,4 @@ sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
 
 
-#sudo reboot
+sudo reboot

@@ -71,7 +71,7 @@ while read line ; do
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" /etc/ssmtp/ssmtp.conf
 done < $base/tmp/templates.tmp
 
-crontab -l | grep -v RMC_CRONTAB > $base/tmp/crontab.out
+crontab -l | grep -v "no crontab for" | grep -v RMC_CRONTAB > $base/tmp/crontab.out
 cat $base/tmp/crontab.out $base/tmp/crontab.in > $base/tmp/crontab.new
 crontab $base/tmp/crontab.new
 

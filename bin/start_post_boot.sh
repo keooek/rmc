@@ -1,4 +1,4 @@
-
+#!/bin/bash -xv
 cd /home/pi/.aMule/
 killall amuled
 killall amuleweb

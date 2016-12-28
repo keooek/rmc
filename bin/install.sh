@@ -55,6 +55,7 @@ cp $base/templates/amule.conf.template ~/.aMule/amule.conf
 cp $base/templates/crontab.template $base/tmp/crontab.in
 cp $base/templates/flexget/* $base_sw/flexget
 cp $base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
+sudo cp $base/templates/ssmtp.conf.template /etc/ssmtp/ssmtp.conf
 
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
@@ -67,6 +68,7 @@ while read line ; do
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-sp.yml
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-en.yml
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.kodi/userdata/sources.xml
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" /etc/ssmtp/ssmtp.conf
 done < $base/tmp/templates.tmp
 
 crontab -l | grep -v RMC_CRONTAB > $base/tmp/crontab.out
@@ -84,6 +86,11 @@ sudo service transmission-daemon stop
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+
+mkdir -p ~/.config/autostart
+cp $base/templates/kodi.desktop ~/.config/autostart
+
+sudo apt-get -y install ssmtp mailutils mpack
 
 
 sudo reboot

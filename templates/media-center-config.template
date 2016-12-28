@@ -45,3 +45,7 @@ export rmc_amule_ECPort=$(( $base_port + 7))
 export rmc_amule_WebServerPort=$(( $base_port + 8))
 #Sshd
 export sshd_port=$(( $base_port + 9))
+#Smtp
+export rmc_smtp_user="$notify_mail"
+export rmc_smtp_pass="mailpass"
+

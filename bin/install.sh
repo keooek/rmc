@@ -55,7 +55,7 @@ cp $base/templates/amule.conf.template ~/.aMule/amule.conf
 cp $base/templates/crontab.template $base/tmp/crontab.in
 cp $base/templates/flexget/* $base_sw/flexget
 cp $base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
-sudo cp $base/templates/ssmtp.conf.template /etc/ssmtp/ssmtp.conf
+sudo cp $base/templates/ssmtp.conf.template $base/tmp/ssmtp.conf
 
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
@@ -68,8 +68,10 @@ while read line ; do
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-sp.yml
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-en.yml
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.kodi/userdata/sources.xml
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" /etc/ssmtp/ssmtp.conf
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/ssmtp.conf
 done < $base/tmp/templates.tmp
+
+sudo cp $base/tmp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
 crontab -l | grep -v "no crontab for" | grep -v "MAIL=" | grep -v RMC_CRONTAB > $base/tmp/crontab.out
 cat $base/tmp/crontab.out $base/tmp/crontab.in > $base/tmp/crontab.new

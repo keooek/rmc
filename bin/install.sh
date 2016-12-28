@@ -46,7 +46,7 @@ mkdir -p ~/.aMule
 
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
-#cp $base/templates/crontab.template $base/tmp/crontab.in
+cp $base/templates/crontab.template $base/tmp/crontab.in
 #cp $base/templates/start_post_boot.sh.template $base_bin/start_post_boot.sh
 cp $base/templates/flexget/* $base_sw/flexget
 

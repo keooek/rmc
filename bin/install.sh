@@ -39,6 +39,8 @@ sudo apt-get -y autoremove
 
 sudo rpi-update
 
+a="Port $"; b="etc/ssh/sshd_config"; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
 [ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile
 

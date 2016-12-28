@@ -44,3 +44,5 @@ export rmc_amule_Port=$(( $base_port + 2)) #+3 sobre este UDP no configurable
 export rmc_amule_UDPPort=$(( $base_port + 6))
 export rmc_amule_ECPort=$(( $base_port + 7))
 export rmc_amule_WebServerPort=$(( $base_port + 8))
+#Sshd
+export sshd_port=$(( $base_port + 9))

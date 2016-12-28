@@ -1,0 +1,25 @@
+
+templates:
+ 
+  tvshows_sp:
+    download: /media/MULTIMEDIA/TORRENT_INCOMING/
+    series:
+      settings:
+        series_group_sp:
+          quality: hdtv 720p
+          ep_regexp:
+            - Cap.(\d+)(\d\d)
+    include: tvshows_spanish.yml
+    regexp:
+      accept:
+        - 720p.*Cap.101]
+      reject:
+        - V.O.:
+            from: title
+
+tasks:
+
+  tvshows_sp_divxatope:
+    rss:
+      url: http://divxatope.com/feeds.xml
+    template: tvshows_sp

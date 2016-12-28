@@ -28,6 +28,7 @@ sudo apt-get -y install kodi
 
 sudo pip install flexget
 flexget -V
+cp $base/templates/flexget/* $base_sw/flexget
 
 cd $base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
@@ -45,6 +46,7 @@ sudo rpi-update
 mkdir -p ~/.aMule
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
+cp $base/templates/crontab.template $base/tmp/crontab.in
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
  escaped_tmp=$(echo $line | cut -d'=' -f2)
@@ -53,7 +55,12 @@ while read line ; do
  echo $escaped
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/etc/transmission_settings.json
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/crontab.in
 done < $base/tmp/templates.tmp
+
+crontab -l | grep -v RMC_CRONTAB > $base/tmp/crontab.out
+cat $base/tmp/crontab.out $base/tmp/crontab.in > $base/tmp/crontab.new
+crontab $base/tmp/crontab.new
 
 cd ~/.aMule
 wget http://upd.emule-security.org/nodes.dat
@@ -66,5 +73,6 @@ sudo service transmission-daemon stop
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+
 
 #sudo reboot

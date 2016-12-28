@@ -1,0 +1,22 @@
+ 
+  tvshows_en:
+    download: /media/MULTIMEDIA/TORRENT_INCOMING/
+    series:
+      settings:
+        series_group_en:
+          upgrade: yes
+          qualities:
+            - 1080p
+            - 720p
+    include: tvshows_english.yml
+    regexp:
+      accept:
+        - S01E01.*1080p
+        - S01E01.*720p
+
+
+tasks:
+
+  tvshows_en_rarbg:
+    rss: http://rarbg.com/rssdd.php?category=18;41
+    template: tvshows_en

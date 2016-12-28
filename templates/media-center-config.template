@@ -1,3 +1,5 @@
+#rmc_* settings are used to replace strings in .template files
+#Not rmc_* settings are use for runtime execution
 export base_port=10000
 export rmc_lan_ip="192.168.1.8"
 export base="/opt/rmc"
@@ -16,6 +18,11 @@ export base_books="$base_hd_input/BOOKS"
 export notify_mail="xxxxxx@gmail.com"
 export kindle_mail="xxxxxx@kindle.com"
 export others_filter="filter1"
+#Crontab
+export rmc_flexget_bin="/usr/local/bin"
+export rmc_logs="$logs"
+export rmc_base_bin="$base_bin"
+export rmc_base_sw="$base_sw"
 #Transmission
 export rmc_transmission_tmp="$base_hd_input/TORRENT_TMP"
 export rmc_transmission_out="$base_hd_input/ALL"
@@ -29,7 +36,7 @@ export AMULE_HOME=$base_sw/amule
 export AMULED_HOME=$base_sw/amule
 export rmc_amule_tmp="$base_hd_input/AMULE_TMP"
 export rmc_amule_out="$base_hd_input/ALL"
-export rmc_amule_OSDirectory="$base_sw/amule"
+export rmc_amule_OSDirectory="/home/pi/.aMule"
 export rmc_amule_MaxSourcesPerFile=300
 export rmc_amule_MaxConnections=500
 export rmc_amule_MaxUpload=20

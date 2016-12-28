@@ -4,7 +4,7 @@
 [[ -z "$(grep media-center-config ~/.bashrc)" ]] && echo "source /opt/rmc/etc/media-center-config" >> ~/.bashrc 
 source /opt/rmc/etc/media-center-config
 
-killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh
+killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin
 [ -z "$base_hd_input" ] && sudo rm -rf $base_hd_input 
 sudo mkdir -p $base_hd_input 
 sudo chown pi:pi $base_hd_input
@@ -91,6 +91,8 @@ mkdir -p ~/.config/autostart
 cp $base/templates/kodi.desktop ~/.config/autostart
 
 sudo apt-get -y install ssmtp mailutils mpack
+
+rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tar.gz
 
 
 sudo reboot

@@ -20,6 +20,7 @@ export kindle_mail="xxxxxx@kindle.com"
 export others_filter="filter1"
 #Crontab
 export flexget_bin="/usr/local/bin"
+export rmc_base_hd_input="$base_hd_input"
 #export rmc_logs="$logs"
 #export rmc_base_bin="$base_bin"
 #export rmc_base_sw="$base_sw"

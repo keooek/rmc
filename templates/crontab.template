@@ -1,3 +1,4 @@
+MAILTO=""
 0 0	* * *	bash -lic '$base_bin/retry.sh >/dev/null 2>&1'    #RMC_CRONTAB
 50 0	* * *	bash -lic '$base_bin/delete_tvshows_watched_lang.sh > $logs/delete_tvshows_watched_lang_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
 */20 *	* * *	bash -lic '$base_bin/media_automation.sh > $logs/media_automation_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB

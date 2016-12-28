@@ -1,4 +1,5 @@
 #!/bin/bash -xv
+
 [[ ! -s "/opt/rmc/etc/media-center-config" ]] && echo "/opt/rmc/etc/media-center-config must exist to continue, please, fill up the corresponding template"
 [[ -z "$(grep media-center-config ~/.bashrc)" ]] && echo "source /opt/rmc/etc/media-center-config" >> ~/.bashrc 
 source /opt/rmc/etc/media-center-config

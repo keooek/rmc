@@ -28,7 +28,6 @@ sudo apt-get -y install kodi
 
 sudo pip install flexget
 flexget -V
-cp $base/templates/flexget/* $base_sw/flexget
 
 cd $base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
@@ -47,8 +46,9 @@ mkdir -p ~/.aMule
 
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
-cp $base/templates/crontab.template $base/tmp/crontab.in
-cp $base/templates/start_post_boot.sh.template $base_bin/start_post_boot.sh
+#cp $base/templates/crontab.template $base/tmp/crontab.in
+#cp $base/templates/start_post_boot.sh.template $base_bin/start_post_boot.sh
+cp $base/templates/flexget/* $base_sw/flexget
 
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
@@ -58,6 +58,8 @@ while read line ; do
  echo $escaped
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/etc/transmission_settings.json
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-sp.yml
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-en.yml
 # sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/crontab.in
 # sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_bin/start_post_boot.sh
 done < $base/tmp/templates.tmp

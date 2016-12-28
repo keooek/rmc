@@ -1,8 +1,7 @@
-
 templates:
  
   tvshows_sp:
-    download: /media/MULTIMEDIA/TORRENT_INCOMING/
+    download: base_hd_input/TORRENT_INCOMING/
     series:
       settings:
         series_group_sp:

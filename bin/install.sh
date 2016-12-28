@@ -3,6 +3,7 @@
 [[ -z "$(grep media-center-config ~/.bashrc)" ]] && echo "source /opt/rmc/etc/media-center-config" >> ~/.bashrc 
 source /opt/rmc/etc/media-center-config
 
+killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh
 sudo mkdir -p $base_hd_input 
 sudo chown pi:pi $base_hd_input
 cd $base_hd_input

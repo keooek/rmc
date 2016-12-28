@@ -4,6 +4,7 @@
 source /opt/rmc/etc/media-center-config
 
 killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh
+[ -z "$base_hd_input" ] && sudo rm -rf $base_hd_input 
 sudo mkdir -p $base_hd_input 
 sudo chown pi:pi $base_hd_input
 cd $base_hd_input
@@ -46,6 +47,7 @@ a="Port $sshd_port"; b="/etc/ssh/sshd_config"; [ -z "$(grep "$a" $b)" ] && sudo 
 [ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile
 
 mkdir -p ~/.aMule
+mkdir -p ~/.kodi/userdata
 
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf

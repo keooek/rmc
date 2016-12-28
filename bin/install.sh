@@ -58,8 +58,8 @@ while read line ; do
  echo $escaped
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/etc/transmission_settings.json
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/crontab.in
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_bin/start_post_boot.sh
+# sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/crontab.in
+# sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_bin/start_post_boot.sh
 done < $base/tmp/templates.tmp
 
 crontab -l | grep -v RMC_CRONTAB > $base/tmp/crontab.out

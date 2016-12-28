@@ -1,10 +1,10 @@
-0 0	* * *	base_bin/retry.sh >/dev/null 2>&1    #RMC_CRONTAB
-50 0	* * *	base_bin/delete_tvshows_watched_lang.sh > logs/delete_tvshows_watched_lang_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
-*/20 *	* * *	base_bin/media_automation.sh > logs/media_automation_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
-0 2 * * 1 base_bin/clean_library_kodi.sh > logs/clean_library_kodi_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
+0 0	* * *	. ~/.profile ; $base_bin/retry.sh >/dev/null 2>&1    #RMC_CRONTAB
+50 0	* * *	. ~/.profile ; $base_bin/delete_tvshows_watched_lang.sh > $logs/delete_tvshows_watched_lang_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
+*/20 *	* * *	. ~/.profile ; $base_bin/media_automation.sh > $logs/media_automation_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
+0 2 * * 1 . ~/.profile ; $base_bin/clean_library_kodi.sh > $logs/clean_library_kodi_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
 
-20,50 *   * * *   flexget_bin/flexget -c base_sw/flexget/config-sp.yml execute -v --tasks tvshows_sp_divxatope > logs/tvshows_sp_divxatope_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
-10,40 *   * * *   flexget_bin/flexget -c base_sw/flexget/config-en.yml execute -v --disable-tracking --tasks tvshows_en_rarbg > logs/tvshows_en_rarbg_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1
+20,50 *   * * *   . ~/.profile ; $flexget_bin/flexget -c $base_sw/flexget/config-sp.yml execute -v --tasks tvshows_sp_divxatope > $logs/tvshows_sp_divxatope_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
+10,40 *   * * *   . ~/.profile ; $flexget_bin/flexget -c $base_sw/flexget/config-en.yml execute -v --disable-tracking --tasks tvshows_en_rarbg > $logs/tvshows_en_rarbg_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1
    #RMC_CRONTAB
-@reboot base_bin/start_post_boot.sh > logs/start_post_boot_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
+@reboot . ~/.profile ; $base_bin/start_post_boot.sh > $logs/start_post_boot_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1   #RMC_CRONTAB
 

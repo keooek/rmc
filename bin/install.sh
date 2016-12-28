@@ -49,8 +49,8 @@ mkdir -p ~/.aMule
 cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
 cp $base/templates/amule.conf.template ~/.aMule/amule.conf
 cp $base/templates/crontab.template $base/tmp/crontab.in
-#cp $base/templates/start_post_boot.sh.template $base_bin/start_post_boot.sh
 cp $base/templates/flexget/* $base_sw/flexget
+cp $base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
 
 env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
 while read line ; do
@@ -62,8 +62,7 @@ while read line ; do
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-sp.yml
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-en.yml
-# sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/crontab.in
-# sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_bin/start_post_boot.sh
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.kodi/userdata/sources.xml
 done < $base/tmp/templates.tmp
 
 crontab -l | grep -v RMC_CRONTAB > $base/tmp/crontab.out

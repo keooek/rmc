@@ -92,7 +92,7 @@ cp $base/templates/kodi.desktop ~/.config/autostart
 
 sudo apt-get -y install ssmtp mailutils mpack
 
-rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tar.gz
+rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tgz
 
 
 sudo reboot

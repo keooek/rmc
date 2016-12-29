@@ -35,12 +35,15 @@ sudo apt-get -y remove openjdk*
 sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com EEA14886
 a="deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
 a="deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+sudo apt-get update
 sudo apt-get -y install oracle-java8-installer
 sudo apt-get -y install oracle-java8-set-default
 
 
 sudo apt-get -y install kodi
 
+sudo apt-get install python-pip
+sudo pip install --upgrade setuptools
 sudo pip install flexget
 flexget -V
 

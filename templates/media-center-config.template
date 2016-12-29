@@ -51,4 +51,6 @@ export sshd_port=$(( $base_port + 9))
 #Smtp
 export rmc_smtp_user="$notify_mail"
 export rmc_smtp_pass="mailpass"    #Gmail password for the account created for rmc
+#Alias
+alias m='cd $base_bin ; ./manage_system_menu.sh; cd -'
 

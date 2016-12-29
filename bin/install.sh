@@ -27,6 +27,15 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 
+sudo apt-get -y remove openjdk*
+sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com EEA14886
+a="deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+sudo apt-get update
+sudo apt-get -y install oracle-java8-installer
+sudo apt-get -y install oracle-java8-set-default
+
+
 sudo apt-get -y install kodi
 
 sudo pip install flexget
@@ -82,6 +91,7 @@ wget http://upd.emule-security.org/nodes.dat
 wget http://upd.emule-security.org/server.met
 
 cp $base/etc/transmission_settings.json $base_sw/transmission/settings.json
+#rm -rf /etc/transmission-daemon
 sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop

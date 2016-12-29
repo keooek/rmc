@@ -1,13 +1,15 @@
 #rmc_* settings are used to replace strings in .template files
 #Not rmc_* settings are use for runtime execution
-export base_port=10000
-export rmc_lan_ip="192.168.1.8"
+#The settings with comment should be reviewed carefully before execute ./install.sh
+
+export base_port=10000          #Base port, forward 10 port at least to the local ip in the router
+export rmc_lan_ip="192.168.1.8"  #Raspberry local IP
 export base="/opt/rmc"
 export base_bin="$base/bin"
 export base_etc="$base/etc"
 export base_tmp="$base/tmp"
 export base_sw="$base/sw"
-export base_hd="/RMC"
+export base_hd="/RMC"         #Put the mount point if you have an external hard drive not configured with Adafruit-Pi-ExternalRoot-Helper
 export base_hd_input="$base_hd/RMC_INPUT"
 export base_hd_output="$base_hd/VIDEO"
 export logs_hd="$base_hd_input/LOGS"
@@ -15,7 +17,7 @@ export logs_sd="$base/log"
 export logs="$logs_sd"
 export kodi_ip="$_rmc_lan_ip:8080"
 export base_books="$base_hd_input/BOOKS"
-export notify_mail="xxxxxx@gmail.com"
+export notify_mail="xxxxxx@gmail.com"     #Email to recieve notifications, recommended create an account only for rmc
 export kindle_mail="xxxxxx@kindle.com"
 export others_filter="filter1"
 #Crontab
@@ -28,7 +30,7 @@ export rmc_transmission_out="$base_hd_input/ALL"
 export rmc_transmission_in="$base_hd_input/TORRENT_INCOMING"
 export rmc_transmission_ppeer=$base_port
 export rmc_transmission_prcp=$(( $base_port + 1))
-export rmc_transmission_pass="ClaveTrans1"
+export rmc_transmission_pass="ClaveTrans1"          #Change default password for transmission
 #Amule
 export AMULE_USER=pi
 export AMULE_HOME=$base_sw/amule
@@ -36,6 +38,7 @@ export AMULED_HOME=$base_sw/amule
 export rmc_amule_tmp="$base_hd_input/AMULE_TMP"
 export rmc_amule_out="$base_hd_input/ALL"
 export rmc_amule_OSDirectory="/home/pi/.aMule"
+export rmc_amule_password="$(echo -n ClaveAmule1 | md5sum |sed 's/  -//)"   #Change default password for amule
 export rmc_amule_MaxSourcesPerFile=300
 export rmc_amule_MaxConnections=500
 export rmc_amule_MaxUpload=20
@@ -47,5 +50,5 @@ export rmc_amule_WebServerPort=$(( $base_port + 8))
 export sshd_port=$(( $base_port + 9))
 #Smtp
 export rmc_smtp_user="$notify_mail"
-export rmc_smtp_pass="mailpass"
+export rmc_smtp_pass="mailpass"    #Gmail password for the account created for rmc
 

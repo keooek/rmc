@@ -110,6 +110,6 @@ sudo apt-get -y install ssmtp mailutils mpack
 
 rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tgz
 
-sed -i 's/^export rmc/#export rmc/' $base/etc/media-center-config
+sed -i 's/export rmc/#export rmc/' $base/etc/media-center-config
 
 sudo reboot

@@ -116,7 +116,7 @@ UseSrcSeeds=0
 AcceptExternalConnections=1
 ECAddress=
 ECPort=amule_ECPort
-ECPassword=9d0b964c057e273b3149d5c9214941c1
+ECPassword=amule_password
 UPnPECEnabled=0
 ShowProgressBar=1
 ShowPercent=1
@@ -126,7 +126,7 @@ IpFilterServers=1
 TransmitOnlyUploadingClients=0
 [WebServer]
 Enabled=1
-Password=9D0B964C057E273B3149D5C9214941C1
+Password=amule_password
 PasswordLow=clavepasswordlow
 Port=amule_WebServerPort
 WebUPnPTCPPort=50001

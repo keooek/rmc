@@ -95,6 +95,10 @@ cp $base/etc/transmission_settings.json $base_sw/transmission/settings.json
 sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
+sudo cp $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+sudo service transmission-daemon start
+sudo service transmission-daemon stop
+sed -i 's/$rmc_transmission_pass/$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d'"' -f4)/' $base/etc/transmission_settings.json
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json

@@ -50,6 +50,7 @@ wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 unxz FileBot.jar.xz
 
 sudo apt-get -y install amule amule-daemon
+sudo apt-get -y install ssmtp mailutils mpack
 
 sudo apt-get -y autoremove
 
@@ -98,9 +99,12 @@ sudo rm -rf /etc/transmission-daemon
 sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
+killall transmission-daemon forever_transmission.sh
 sudo cp $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
 sudo service transmission-daemon start
+sleep 3
 sudo service transmission-daemon stop
+killall transmission-daemon forever_transmission.sh
 sedeasy "$rmc_transmission_pass" "$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d\" -f4)" $base/etc/transmission_settings.json
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
@@ -108,8 +112,6 @@ sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settin
 
 mkdir -p ~/.config/autostart
 cp $base/templates/kodi.desktop ~/.config/autostart
-
-sudo apt-get -y install ssmtp mailutils mpack
 
 rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tgz
 

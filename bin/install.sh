@@ -4,6 +4,10 @@
 [[ -z "$(grep media-center-config ~/.bashrc)" ]] && echo "source /opt/rmc/etc/media-center-config" >> ~/.bashrc 
 source /opt/rmc/etc/media-center-config
 
+function sedeasy {
+  sed -i "s/$(echo $1 | sed -e 's/\([[\/.*]\|\]\)/\\&/g')/$(echo $2 | sed -e 's/[\/&]/\\&/g')/g" $3
+}
+
 killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin
 [ -z "$base_hd_input" ] && sudo rm -rf $base_hd_input 
 sudo mkdir -p $base_hd_input 
@@ -90,15 +94,14 @@ cd ~/.aMule
 wget http://upd.emule-security.org/nodes.dat
 wget http://upd.emule-security.org/server.met
 
-cp $base/etc/transmission_settings.json $base_sw/transmission/settings.json
-#rm -rf /etc/transmission-daemon
+sudo rm -rf /etc/transmission-daemon
 sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
 sudo cp $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
 sudo service transmission-daemon start
 sudo service transmission-daemon stop
-sed -i 's/$rmc_transmission_pass/$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d'"' -f4)/' $base/etc/transmission_settings.json
+sedeasy "$rmc_transmission_pass" "$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d\" -f4)" $base/etc/transmission_settings.json
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json

@@ -35,7 +35,6 @@ sudo apt-get -y remove openjdk*
 sudo apt-key adv --recv-key --keyserver keyserver.ubuntu.com EEA14886
 a="deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
 a="deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
-sudo apt-get update
 sudo apt-get -y install oracle-java8-installer
 sudo apt-get -y install oracle-java8-set-default
 
@@ -109,6 +108,7 @@ sedeasy "$rmc_transmission_pass" "$(sudo grep rpc-password /etc/transmission-dae
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
 sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+cp $base/etc/transmission_settings.json $base/sw/transmission/settings.json
 
 mkdir -p ~/.config/autostart
 cp $base/templates/kodi.desktop ~/.config/autostart

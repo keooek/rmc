@@ -9,7 +9,7 @@ function sedeasy {
 }
 
 #Clean and reinstall client
-# cd /opt ; killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin ; rm -rf ~/.aMule ; rm -rf ~/.kodi ; rm -rf /opt/rmc/* ; rm -rf /opt/rmc/.git ; sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc
+# cd /opt ; killall flexget amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin ; rm -rf ~/.aMule ; rm -rf ~/.kodi ; rm -rf /opt/rmc/* ; rm -rf /opt/rmc/.git ; sudo mkdir /opt/rmc ; sudo chown pi:pi /opt/rmc ; cd /opt ; git clone https://github.com/keooek/rmc
 
 killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin
 [ -z "$rmc_base_hd_input" ] && sudo rm -rf $rmc_base_hd_input 

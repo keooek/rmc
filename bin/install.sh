@@ -9,15 +9,15 @@ function sedeasy {
 }
 
 killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmission.sh kodi kodi.bin
-[ -z "$base_hd_input" ] && sudo rm -rf $base_hd_input 
-sudo mkdir -p $base_hd_input 
-sudo chown pi:pi $base_hd_input
-cd $base_hd_input
+[ -z "$rmc_base_hd_input" ] && sudo rm -rf $rmc_base_hd_input 
+sudo mkdir -p $rmc_base_hd_input 
+sudo chown pi:pi $rmc_base_hd_input
+cd $rmc_base_hd_input
 mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
-mkdir -p $base/sw/flexget $base/log $base/tmp
-sudo mkdir -p $base_hd_output
-sudo chown pi:pi $base_hd_output
-cd $base_hd_output
+mkdir -p $rmc_base/sw/flexget $rmc_base/log $rmc_base/tmp
+sudo mkdir -p $rmc_base_hd_output
+sudo chown pi:pi $rmc_base_hd_output
+cd $rmc_base_hd_output
 mkdir MOVIES-3D-EN MOVIES-3D-SP MOVIES-EN MOVIES-OLD-EN MOVIES-OLD-SP MOVIES-SP TVSHOWS-EN TVSHOWS-SP YOUTUBE-MUSIC
 
 a="pi hard nofile 16384"; b="/etc/security/limits.conf" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
@@ -47,7 +47,7 @@ sudo pip install --upgrade setuptools
 sudo pip install flexget
 flexget -V
 
-cd $base/sw/filebot 
+cd $rmc_base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 unxz FileBot.jar.xz
 
@@ -58,41 +58,42 @@ sudo apt-get -y autoremove
 
 sudo rpi-update
 
-a="Port $sshd_port"; b="/etc/ssh/sshd_config"; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+a="Port $rmc_sed_sshd_port"; b="/etc/ssh/sshd_config"; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
 
 [ -z "$(grep "gpu_mem=256" /boot/config.txt)" ] && sudo /bin/su -c "echo 'gpu_mem=256' >> /boot/config.txt"
-[ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$base/sw/filebot:\$PATH" >> ~/.profile
+[ -z "$(grep "filebot" ~/.profile)" ] && echo "export PATH=\$rmc_base/sw/filebot:\$PATH" >> ~/.profile
 
 rm -rf ~/aMule
 mkdir -p ~/.aMule
 mkdir -p ~/.kodi/userdata
 
-cp $base/templates/transmission_settings.json.template $base/etc/transmission_settings.json
-cp $base/templates/amule.conf.template ~/.aMule/amule.conf
-cp $base/templates/crontab.template $base/tmp/crontab.in
-cp $base/templates/flexget/* $base_sw/flexget
-cp $base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
-sudo cp $base/templates/ssmtp.conf.template $base/tmp/ssmtp.conf
+cp $rmc_base/templates/transmission_settings.json.template $rmc_base/etc/transmission_settings.json
+cp $rmc_base/templates/amule.conf.template ~/.aMule/amule.conf
+cp $rmc_base/templates/crontab.template $rmc_base/tmp/crontab.in
+cp $rmc_base/templates/flexget/* $rmc_base/sw/flexget
+cp $rmc_base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
+sudo cp $rmc_base/templates/ssmtp.conf.template $rmc_base/tmp/ssmtp.conf
 
-env|grep "rmc_"|sed 's/rmc_//' > $base/tmp/templates.tmp
+#env|grep "rmc_"|sed 's/rmc_//' > $rmc_base/tmp/templates.tmp
+env|grep "rmc_sed" > $rmc_base/tmp/templates.tmp
 while read line ; do
  escaped_tmp=$(echo $line | cut -d'=' -f2)
  echo $escaped_tmp
  escaped=$(echo $escaped_tmp|sed 's/\//\\\//g')
  echo $escaped
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/etc/transmission_settings.json
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $rmc_base/etc/transmission_settings.json
  sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.aMule/amule.conf
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-sp.yml
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base_sw/flexget/config-en.yml
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.kodi/userdata/sources.xml
- sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $base/tmp/ssmtp.conf
-done < $base/tmp/templates.tmp
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $rmc_base/sw/flexget/config-sp.yml
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $rmc_base/sw/flexget/config-en.yml
+ #sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" ~/.kodi/userdata/sources.xml
+ sed -i "s/$(echo $line | cut -d'=' -f1)/$escaped/" $rmc_base/tmp/ssmtp.conf
+done < $rmc_base/tmp/templates.tmp
 
-sudo cp $base/tmp/ssmtp.conf /etc/ssmtp/ssmtp.conf
+sudo cp $rmc_base/tmp/ssmtp.conf /etc/ssmtp/ssmtp.conf
 
-crontab -l | grep -v "no crontab for" | grep -v "MAIL=" | grep -v RMC_CRONTAB > $base/tmp/crontab.out
-cat $base/tmp/crontab.out $base/tmp/crontab.in > $base/tmp/crontab.new
-crontab $base/tmp/crontab.new
+crontab -l | grep -v "no crontab for" | grep -v "MAIL=" | grep -v RMC_CRONTAB > $rmc_base/tmp/crontab.out
+cat $rmc_base/tmp/crontab.out $rmc_base/tmp/crontab.in > $rmc_base/tmp/crontab.new
+crontab $rmc_base/tmp/crontab.new
 
 cd ~/.aMule
 wget http://upd.emule-security.org/nodes.dat
@@ -103,22 +104,22 @@ sudo apt-get -y --purge remove transmission-daemon
 sudo apt-get -y install transmission-daemon
 sudo service transmission-daemon stop
 killall transmission-daemon forever_transmission.sh
-sudo cp $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+sudo cp $rmc_base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
 sudo service transmission-daemon start
 sleep 3
 sudo service transmission-daemon stop
 killall transmission-daemon forever_transmission.sh
-sedeasy "$rmc_transmission_pass" "$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d\" -f4)" $base/etc/transmission_settings.json
+sedeasy "$rmc_sed_transmission_pass" "$(sudo grep rpc-password /etc/transmission-daemon/settings.json |cut -d\" -f4)" $rmc_base/etc/transmission_settings.json
 sudo systemctl disable transmission-daemon
 sudo chown -R pi:pi /var/lib/transmission-daemon /etc/transmission-daemon
-sudo cp -pf $base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
-cp $base/etc/transmission_settings.json $base/sw/transmission/settings.json
+sudo cp -pf $rmc_base/etc/transmission_settings.json /etc/transmission-daemon/settings.json
+cp $rmc_base/etc/transmission_settings.json $rmc_base/sw/transmission/settings.json
 
 mkdir -p ~/.config/autostart
-cp $base/templates/kodi.desktop ~/.config/autostart
+cp $rmc_base/templates/kodi.desktop ~/.config/autostart
 
-rm -rf ~/.kodi ; cd ~ ; tar zxvf $base/templates/kodi.tgz
+rm -rf ~/.kodi ; cd ~ ; tar zxvf $rmc_base/templates/kodi.tgz
 
-sed -i 's/export rmc/#export rmc/' $base/etc/media-center-config
+sed -i 's/export rmc_sed_/#export rmc_sed_/' $rmc_base/etc/media-center-config
 
 sudo reboot

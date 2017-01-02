@@ -9,8 +9,8 @@ action=$1
 language=$2
 shift 2
 tvshow=$*
-file_en="$base_sw/flexget/tvshows_english.yml"
-file_sp="$base_sw/flexget/tvshows_spanish.yml"
+file_en="$rmc_base/sw/flexget/tvshows_english.yml"
+file_sp="$rmc_base/sw/flexget/tvshows_spanish.yml"
 
 echo $action $language $tvshow
  

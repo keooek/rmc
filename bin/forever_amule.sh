@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $base_bin
+cd $rmc_base/bin
 
 while true; do
 
@@ -9,7 +9,7 @@ while true; do
 
  if [ $? -ne 0 ] # if not running
  then
-  echo "$(date): Reinicio amule" > $logs/forever_amule_$(date +%Y%m%d-%H_%M_%S).txt 2>&1
+  echo "$(date): Reinicio amule" > $rmc_logs/forever_amule_$(date +%Y%m%d-%H_%M_%S).txt 2>&1
   cd /home/pi/.aMule/
   killall amuled
   killall amuleweb

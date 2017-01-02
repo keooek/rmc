@@ -1,7 +1,7 @@
 templates:
  
   tvshows_en:
-    download: base_hd_input/TORRENT_INCOMING/
+    download: rmc_sed_base_hd_input/TORRENT_INCOMING/
     series:
       settings:
         series_group_en:

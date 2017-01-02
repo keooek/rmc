@@ -1,56 +1,57 @@
-#rmc_* settings are used to replace strings in .template files
-#Not rmc_* settings are use for runtime execution
+#rmc_sed_* settings are used to replace strings in .template files
+#Not rmc_sed_* settings are use for runtime execution
 #The settings with comment should be reviewed carefully before execute ./install.sh
 
-export base_port=10000          #Base port, forward 10 port at least to the local ip in the router
+export rmc_base_port=10000          #Base port, forward 10 port at least to the local ip in the router
 export rmc_lan_ip="192.168.1.8"  #Raspberry local IP
-export base="/opt/rmc"
-export base_bin="$base/bin"
-export base_etc="$base/etc"
-export base_tmp="$base/tmp"
-export base_sw="$base/sw"
-export base_hd="/RMC"         #Put the mount point if you have an external hard drive not configured with Adafruit-Pi-ExternalRoot-Helper
-export base_hd_input="$base_hd/RMC_INPUT"
-export base_hd_output="$base_hd/VIDEO"
-export logs_hd="$base_hd_input/LOGS"
-export logs_sd="$base/log"
-export logs="$logs_sd"
-export kodi_ip="$rmc_lan_ip:8080"
-export base_books="$base_hd_input/BOOKS"
-export notify_mail="xxxxxx@gmail.com"     #Email to recieve notifications, recommended create an account only for rmc
-export kindle_mail="xxxxxx@kindle.com"
-export others_filter="filter1"
+export rmc_base="/opt/rmc"
+#export rmc_base_bin="$base/bin"
+#export rmc_base_etc="$base/etc"
+#export rmc_base_tmp="$base/tmp"
+#export rmc_base_sw="$base/sw"
+export rmc_base_hd="/RMC"         #Put the mount point if you have an external hard drive not configured with Adafruit-Pi-ExternalRoot-Helper
+export rmc_base_hd_input="$base_hd/RMC_INPUT"
+export rmc_base_hd_output="$base_hd/VIDEO"
+export rmc_logs_hd="$base_hd_input/LOGS"
+export rmc_logs_sd="$base/log"
+export rmc_logs="$logs_sd"
+export rmc_kodi_ip="$rmc_lan_ip:8080"
+export rmc_base_books="$base_hd_input/BOOKS"
+export rmc_notify_mail="xxxxxx@gmail.com"     #Email to recieve notifications, recommended create an account only for rmc
+export rmc_kindle_mail="xxxxxx@kindle.com"
+export rmc_others_filter="filter1"
 #Crontab
-export flexget_bin="/usr/local/bin"
-export rmc_base_hd_input="$base_hd_input"
-export rmc_base_hd_output="$base_hd_output"
+export rmc_flexget_bin="/usr/local/bin"
+#export rmc_sed_base_hd_input="$base_hd_input"
+#export rmc_sed_base_hd_output="$base_hd_output"
 #Transmission
-export rmc_transmission_tmp="$base_hd_input/TORRENT_TMP"
-export rmc_transmission_out="$base_hd_input/ALL"
-export rmc_transmission_in="$base_hd_input/TORRENT_INCOMING"
-export rmc_transmission_ppeer=$base_port
-export rmc_transmission_prcp=$(( $base_port + 1))
-export rmc_transmission_pass="ClaveTrans1"          #Change default password for transmission
+export rmc_sed_transmission_tmp="$base_hd_input/TORRENT_TMP"
+export rmc_sed_transmission_out="$base_hd_input/ALL"
+export rmc_sed_transmission_in="$base_hd_input/TORRENT_INCOMING"
+export rmc_sed_transmission_ppeer=$base_port
+export rmc_sed_transmission_prcp=$(( $base_port + 1))
+export rmc_sed_transmission_pass="ClaveTrans1"          #Change default password for transmission
+export rmc_sed_transmission_lan_ip="$rmc_lan_ip"
 #Amule
 export AMULE_USER=pi
 export AMULE_HOME=$base_sw/amule
 export AMULED_HOME=$base_sw/amule
-export rmc_amule_tmp="$base_hd_input/AMULE_TMP"
-export rmc_amule_out="$base_hd_input/ALL"
-export rmc_amule_OSDirectory="/home/pi/.aMule"
-export rmc_amule_password="$(echo -n ClaveAmule1 | md5sum |sed 's/  -//')"   #Change default password for amule
-export rmc_amule_MaxSourcesPerFile=300
-export rmc_amule_MaxConnections=500
-export rmc_amule_MaxUpload=20
-export rmc_amule_Port=$(( $base_port + 2)) #+3 sobre este UDP no configurable, do not change this
-export rmc_amule_UDPPort=$(( $base_port + 6))
-export rmc_amule_ECPort=$(( $base_port + 7))
-export rmc_amule_WebServerPort=$(( $base_port + 8))
+export rmc_sed_amule_tmp="$base_hd_input/AMULE_TMP"
+export rmc_sed_amule_out="$base_hd_input/ALL"
+export rmc_sed_amule_OSDirectory="/home/pi/.aMule"
+export rmc_sed_amule_password="$(echo -n ClaveAmule1 | md5sum |sed 's/  -//')"   #Change default password for amule
+export rmc_sed_amule_MaxSourcesPerFile=300
+export rmc_sed_amule_MaxConnections=500
+export rmc_sed_amule_MaxUpload=20
+export rmc_sed_amule_Port=$(( $base_port + 2)) #+3 sobre este UDP no configurable, do not change this
+export rmc_sed_amule_UDPPort=$(( $base_port + 6))
+export rmc_sed_amule_ECPort=$(( $base_port + 7))
+export rmc_sed_amule_WebServerPort=$(( $base_port + 8))
 #Sshd
-export sshd_port=$(( $base_port + 9))
+export rmc_sed_sshd_port=$(( $base_port + 9))
 #Smtp
-export rmc_smtp_user="$notify_mail"
-export rmc_smtp_pass="mailpass"    #Gmail password for the account created for rmc
+export rmc_sed_smtp_user="$notify_mail"
+export rmc_sed_smtp_pass="mailpass"    #Gmail password for the account created for rmc
 #Alias
-alias m='cd $base_bin ; ./manage_system_menu.sh; cd -'
+alias m='cd $rmc_base/bin ; ./manage_system_menu.sh; cd -'
 

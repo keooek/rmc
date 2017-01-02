@@ -6,10 +6,10 @@ rm /home/pi/.aMule/{muleLock,statistics.dat}
 nohup /usr/bin/amuled &
 
 killall transmission-daemon
-/usr/bin/transmission-daemon -g $base_sw/transmission --log-debug -e $logs/transmission.log
+/usr/bin/transmission-daemon -g $rmc_base/sw/transmission --log-debug -e $rmc_logs/transmission.log
 
 sleep 30
-#$base_bin/forever_qbittorrent.sh
-nohup $base_bin/forever_amule.sh &
-nohup $base_bin/forever_transmission.sh &
+#$rmc_base/bin/forever_qbittorrent.sh
+nohup $rmc_base/bin/forever_amule.sh &
+nohup $rmc_base/bin/forever_transmission.sh &
 

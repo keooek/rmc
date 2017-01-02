@@ -34,8 +34,8 @@ export rmc_sed_transmission_pass="ClaveTrans1"          #Change default password
 export rmc_sed_transmission_lan_ip="$rmc_lan_ip"
 #Amule
 export AMULE_USER=pi
-export AMULE_HOME=$base_sw/amule
-export AMULED_HOME=$base_sw/amule
+export AMULE_HOME=$base/sw/amule
+export AMULED_HOME=$base/sw/amule
 export rmc_sed_amule_tmp="$base_hd_input/AMULE_TMP"
 export rmc_sed_amule_out="$base_hd_input/ALL"
 export rmc_sed_amule_OSDirectory="/home/pi/.aMule"

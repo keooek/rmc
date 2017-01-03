@@ -17,7 +17,7 @@ find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*[sS][
 #Books
 find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $rmc_base_hd_input/BOOKS \;
 #Custom
-find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\($others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
+find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\($rmc_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
 find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3|iscogra\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 #PS3
@@ -46,8 +46,7 @@ mv -vf $rmc_base_hd_input/ALL/* $rmc_base_hd_input/SKIPPED
 [[ $(find $rmc_base_hd_input/MOVIES-SP -type f -size +150M) ]] && $rmc_base/bin/movies-sp.sh
 [[ $(find $rmc_base_hd_input/BOOKS -type f -size -20M ) ]] && $rmc_base/bin/books.sh
 
-find $rmc_logs -type f -mtime +5 -exec rm {} \;
-find $rmc_logs -mtime +30 -exec rm {} \;
+find $rmc_logs -type f -mtime +60 -exec rm {} \;
 
 #flexget series forget "The Strain"
 

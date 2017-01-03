@@ -5,13 +5,10 @@
 export rmc_base_port=10000          #Base port, forward 10 port at least to the local ip in the router
 export rmc_lan_ip="192.168.1.8"  #Raspberry local IP
 export rmc_base="/opt/rmc"
-#export rmc_base_bin="$rmc_base/bin"
-#export rmc_base_etc="$rmc_base/etc"
-#export rmc_base_tmp="$rmc_base/tmp"
-#export rmc_base_sw="$rmc_base/sw"
 export rmc_base_hd="/RMC"         #Put the mount point if you have an external hard drive not configured with Adafruit-Pi-ExternalRoot-Helper
 export rmc_base_hd_input="$rmc_base_hd/RMC_INPUT"
 export rmc_base_hd_video="$rmc_base_hd/VIDEO"
+export rmc_base_hd_audio="$rmc_base_hd/AUDIO"
 export rmc_logs_hd="$rmc_base_hd_input/LOGS"
 export rmc_logs_sd="$rmc_base/log"
 export rmc_logs="$rmc_logs_sd"
@@ -22,8 +19,6 @@ export rmc_kindle_mail="xxxxxx@kindle.com"
 export rmc_others_filter="filter1"
 #Crontab
 export rmc_flexget_bin="/usr/local/bin"
-#export rmc_sed_base_hd_input="$rmc_base_hd_input"
-#export rmc_sed_base_hd_output="$rmc_base_hd_video"
 #Transmission
 export rmc_sed_transmission_tmp="$rmc_base_hd_input/TORRENT_TMP"
 export rmc_sed_transmission_out="$rmc_base_hd_input/ALL"
@@ -34,8 +29,6 @@ export rmc_sed_transmission_pass="ClaveTrans1"          #Change default password
 export rmc_sed_transmission_lan_ip="$rmc_lan_ip"
 #Amule
 export AMULE_USER=pi
-#export AMULE_HOME=$rmc_base/sw/amule
-#export AMULED_HOME=$rmc_base/sw/amule
 export rmc_sed_amule_tmp="$rmc_base_hd_input/AMULE_TMP"
 export rmc_sed_amule_out="$rmc_base_hd_input/ALL"
 export rmc_sed_amule_OSDirectory="/home/pi/.aMule"

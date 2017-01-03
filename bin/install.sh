@@ -24,6 +24,10 @@ sudo mkdir -p $rmc_base_hd_video
 sudo chown pi:pi $rmc_base_hd_video
 cd $rmc_base_hd_video
 mkdir MOVIES-3D-EN MOVIES-3D-SP MOVIES-EN MOVIES-OLD-EN MOVIES-OLD-SP MOVIES-SP TVSHOWS-EN TVSHOWS-SP YOUTUBE-MUSIC
+sudo mkdir -p $rmc_base_hd_audio
+sudo chown pi:pi $rmc_base_hd_audio
+cd $rmc_base_hd_audio
+mkdir UNCATALOGED DISCOGRAPHY
 
 a="pi hard nofile 16384"; b="/etc/security/limits.conf" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
 a="pi soft nofile 8192"; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
@@ -44,6 +48,14 @@ sudo apt-get update
 sudo apt-get -y install oracle-java8-installer
 sudo apt-get -y install oracle-java8-set-default
 
+if [ -z "$(unrar |grep freeware)" ] ; then
+ a="deb-src http://mirrordirector.raspbian.org/raspbian/ jessie main contrib non-free rpi"; b="/etc/apt/sources.list" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"
+ sudo apt-get update
+ cd $rmc_base/tmp/
+ sudo apt-get build-dep unrar-nonfree
+ sudo apt-get source -b unrar-nonfree
+ sudo dpkg -i unrar*deb
+fi
 
 sudo apt-get -y install kodi
 

@@ -18,8 +18,8 @@ find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*[sS][
 find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $rmc_base_hd_input/BOOKS \;
 #Custom
 find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\($others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
-#MP3
-find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/MP3 \;
+#Audio
+find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\(MP3\|mp3|iscogra\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 #PS3
 find $rmc_base_hd_input/ALL $rmc_base_hd_input/AMULE -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $rmc_base_hd_input/PS3 \;
 #TVShows SP
@@ -56,10 +56,10 @@ find $rmc_base/sw/flexget/ -name ".config-sp-lock" -mmin +100 -exec rm -f {} \;
 find $rmc_base/sw/flexget/ -name ".config-en-lock" -mmin +100 -exec rm -f {} \;
 
 #Copy youtube videos
-find ~pi -maxdepth 1 -name "*mp4" -exec mv -v {} $rmc_base_hd_output/YOUTUBE-MUSIC \;
-find ~pi -maxdepth 1 -name "*webm" -exec mv -v {} $rmc_base_hd_output/YOUTUBE-MUSIC \;
+find ~pi -maxdepth 1 -name "*mp4" -exec mv -v {} $rmc_base_hd_video/YOUTUBE-MUSIC \;
+find ~pi -maxdepth 1 -name "*webm" -exec mv -v {} $rmc_base_hd_video/YOUTUBE-MUSIC \;
 sudo chown pi:pi ~yola/*mp4 ~yola/*webm
-sudo find ~yola -maxdepth 1 -name "*mp4" -exec mv -v {} $rmc_base_hd_output/YOUTUBE-MUSIC \;
-sudo find ~yola -maxdepth 1 -name "*webm" -exec mv -v {} $rmc_base_hd_output/YOUTUBE-MUSIC \;
+sudo find ~yola -maxdepth 1 -name "*mp4" -exec mv -v {} $rmc_base_hd_video/YOUTUBE-MUSIC \;
+sudo find ~yola -maxdepth 1 -name "*webm" -exec mv -v {} $rmc_base_hd_video/YOUTUBE-MUSIC \;
 
 exit 0

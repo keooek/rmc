@@ -11,7 +11,7 @@ export rmc_base="/opt/rmc"
 #export rmc_base_sw="$rmc_base/sw"
 export rmc_base_hd="/RMC"         #Put the mount point if you have an external hard drive not configured with Adafruit-Pi-ExternalRoot-Helper
 export rmc_base_hd_input="$rmc_base_hd/RMC_INPUT"
-export rmc_base_hd_output="$rmc_base_hd/VIDEO"
+export rmc_base_hd_video="$rmc_base_hd/VIDEO"
 export rmc_logs_hd="$rmc_base_hd_input/LOGS"
 export rmc_logs_sd="$rmc_base/log"
 export rmc_logs="$rmc_logs_sd"
@@ -23,7 +23,7 @@ export rmc_others_filter="filter1"
 #Crontab
 export rmc_flexget_bin="/usr/local/bin"
 #export rmc_sed_base_hd_input="$rmc_base_hd_input"
-#export rmc_sed_base_hd_output="$rmc_base_hd_output"
+#export rmc_sed_base_hd_output="$rmc_base_hd_video"
 #Transmission
 export rmc_sed_transmission_tmp="$rmc_base_hd_input/TORRENT_TMP"
 export rmc_sed_transmission_out="$rmc_base_hd_input/ALL"

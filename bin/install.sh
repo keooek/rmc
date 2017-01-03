@@ -18,11 +18,11 @@ killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmissio
 sudo mkdir -p $rmc_base_hd_input 
 sudo chown pi:pi $rmc_base_hd_input
 cd $rmc_base_hd_input
-mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP MP3 OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
+mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP AUDIO OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
 mkdir -p $rmc_base/sw/flexget $rmc_base/log $rmc_base/tmp
-sudo mkdir -p $rmc_base_hd_output
-sudo chown pi:pi $rmc_base_hd_output
-cd $rmc_base_hd_output
+sudo mkdir -p $rmc_base_hd_video
+sudo chown pi:pi $rmc_base_hd_video
+cd $rmc_base_hd_video
 mkdir MOVIES-3D-EN MOVIES-3D-SP MOVIES-EN MOVIES-OLD-EN MOVIES-OLD-SP MOVIES-SP TVSHOWS-EN TVSHOWS-SP YOUTUBE-MUSIC
 
 a="pi hard nofile 16384"; b="/etc/security/limits.conf" ; [ -z "$(grep "$a" $b)" ] && sudo /bin/su -c "echo '$a' >> $b"

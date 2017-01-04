@@ -67,6 +67,7 @@ flexget -V
 cd $rmc_base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 unxz FileBot.jar.xz
+sudo apt-get -y install libmediainfo0 libchromaprint-tools
 
 sudo apt-get -y install amule amule-daemon
 sudo apt-get -y install ssmtp mailutils mpack

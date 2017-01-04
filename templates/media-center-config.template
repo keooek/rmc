@@ -47,4 +47,3 @@ export rmc_sed_smtp_user="$rmc_notify_mail"
 export rmc_sed_smtp_pass="mailpass"    #Gmail password for the account created for rmc
 #Alias
 alias m='cd $rmc_base/bin ; ./manage_system_menu.sh; cd -'
-

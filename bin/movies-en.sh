@@ -15,7 +15,7 @@ filebot.sh -r -script fn:cleaner "$rmc_base_hd_video/MOVIES-EN" --log all --log-
 rm $rmc_base_hd_video/MOVIES--EN/{*.sub,*.srt,*.url,*.idx,*.nfo,*.rar}
 #filebot.sh -script fn:artwork.tmdb "$rmc_base_hd_video/MOVIES-EN"
 lsA="$(ls -A $rmc_base_hd_input/SKIPPED)"
-( egrep -i '(MOVE|Skipped)' $rmc_logs/moviesen_rename_${date_str}.txt; echo "SKIPPED"; ls -1rt $rmc_base_hd_input/SKIPPED; ) | mail -s "$(egrep -i '(MOVE|Skipped)' $rmc_logs/moviesen_rename_${date_str}.txt| wc -l)-$([[ $lsA ]] && echo "SK-")MV-EN $(basename "$j")" $notify_mail
+( egrep -i '(MOVE|Skipped)' $rmc_logs/moviesen_rename_${date_str}.txt; echo "SKIPPED"; ls -1rt $rmc_base_hd_input/SKIPPED; ) | mail -s "$(egrep -i '(MOVE|Skipped)' $rmc_logs/moviesen_rename_${date_str}.txt| wc -l)-$([[ $lsA ]] && echo "SK-")MV-EN $(basename "$j")" $rmc_notify_mail
 mv $rmc_base_hd_input/MOVIES-EN/* $rmc_base_hd_input/SKIPPED
 if [[ "$(grep MOVE $rmc_logs/moviesen_rename_${date_str}.txt)" == *MOVE* ]] ; then
  curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc

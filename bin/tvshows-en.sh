@@ -18,7 +18,7 @@ unset IFS
 filebot.sh -r -script fn:cleaner "$rmc_base_hd_input/TVSHOWS-EN" --log all --log-file $rmc_logs/tvshowsen_clean_$(date +%Y%m%d-%H_%M_%S).txt
 filebot.sh -r -script fn:cleaner "$rmc_base_hd_video/TVSHOWS-EN" --log all --log-file $rmc_logs/tvshowsen_clean_library_$(date +%Y%m%d-%H_%M_%S).txt
 lsA="$(ls -A $rmc_base_hd_input/SKIPPED)"
-( egrep -i '(MOVE|Skipped)' $rmc_logs/tvshowsen_rename_${date_str}.txt; echo "SKIPPED"; ls -1rt $rmc_base_hd_input/SKIPPED; ) | mail -s "$(egrep -i '(MOVE|Skipped)' $rmc_logs/tvshowsen_rename_${date_str}.txt| wc -l)-$([[ $lsA ]] && echo "SK-")TV-EN $(basename "$j")" $notify_mail
+( egrep -i '(MOVE|Skipped)' $rmc_logs/tvshowsen_rename_${date_str}.txt; echo "SKIPPED"; ls -1rt $rmc_base_hd_input/SKIPPED; ) | mail -s "$(egrep -i '(MOVE|Skipped)' $rmc_logs/tvshowsen_rename_${date_str}.txt| wc -l)-$([[ $lsA ]] && echo "SK-")TV-EN $(basename "$j")" $rmc_notify_mail
 #cd /opt/share/filebot/bin; ./filebot.sh -get-missing-subtitles --lang en --log all --log-file $rmc_logs/tvshowsen_subs_$(date +%Y%m%d-%H_%M_%S).txt $rmc_base_hd_video/TVSHOWS-EN/Justified/T6/
 mv $rmc_base_hd_input/TVSHOWS-EN/* $rmc_base_hd_input/SKIPPED/
 if [[ "$(grep MOVE $rmc_logs/tvshowsen_rename_${date_str}.txt)" == *MOVE* ]] ; then

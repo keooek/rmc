@@ -57,10 +57,10 @@ if [ -z "$(unrar |grep freeware)" ] ; then
  sudo dpkg -i unrar*deb
 fi
 
-sudo apt-get -y --purge remove kodi
-rm -rf ~/.kodi ; cd ~ ; mkdir ~/.kodi
+sudo apt-get -y --purge remove kodi kodi.bin
+rm -rf ~/.kodi ; mkdir ~/.kodi
 sudo apt-get -y install kodi
-tar zxvf $rmc_base/templates/kodi.tgz
+tar zxvf $rmc_base/templates/kodi.tgz -C ~/
 
 sudo apt-get install python-pip
 sudo pip install --upgrade setuptools

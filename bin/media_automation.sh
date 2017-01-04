@@ -19,8 +19,30 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec
 #Custom
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
-find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(MP3\|mp3|iscogra\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
-#find $rmc_base_hd_input/ALL -maxdepth 1 -name "*.rar" -exec unrar lt {} \;
+rename 'y/A-Z/a-z/' $rmc_base_hd_input/ALL/*.RAR $rmc_base_hd_input/ALL/*.ZIP
+for z in $(ls -1t $rmc_base_hd_input/*.rar 2> /dev/null|grep -v ":") ; do
+ if [ ! -z $(unrar lt $rmc_base_hd_input/$z | egrep -i '(.mp3|.MP3)' ) ] ; then
+  mkdir -p $rmc_base_hd_input/AUDIO/$(basename $z)
+  unrar x $rmc_base_hd_input/$z $rmc_base_hd_input/AUDIO/$(basename $z)
+  # If directory created has only one subdirectory and no other content, move the content one level before
+  if [ "$(find $rmc_base_hd_input/AUDIO/$(basename $z) -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find $rmc_base_hd_input/AUDIO/$(basename $z) -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv $rmc_base_hd_input/AUDIO/$(basename $z)/* $rmc_base_hd_input/AUDIO/
+   rm -rf $rmc_base_hd_input/AUDIO/$(basename $z)/
+  fi
+ fi
+done
+for y in $(ls -1t $rmc_base_hd_input/*.zip 2> /dev/null|grep -v ":") ; do
+ if [ ! -z $(unzip -l $rmc_base_hd_input/$y | egrep -i '(.mp3|.MP3)' ) ] ; then
+  mkdir -p $rmc_base_hd_input/AUDIO/$(basename $y)
+  unzip $rmc_base_hd_input/$y -d $rmc_base_hd_input/AUDIO/$(basename $y)
+  # If directory created has only one subdirectory and no other content, move the content one level before
+  if [ "$(find $rmc_base_hd_input/AUDIO/$(basename $y) -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find $rmc_base_hd_input/AUDIO/$(basename $y) -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv $rmc_base_hd_input/AUDIO/$(basename $y)/* $rmc_base_hd_input/AUDIO/
+   rm -rf $rmc_base_hd_input/AUDIO/$(basename $y)/
+  fi
+ fi
+find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
+done
 #PS3
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $rmc_base_hd_input/PS3 \;
 #TVShows SP

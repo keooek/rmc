@@ -67,6 +67,14 @@ flexget -V
 cd $rmc_base/sw/filebot 
 wget https://sourceforge.net/projects/filebot/files/filebot/HEAD/FileBot.jar.xz
 unxz FileBot.jar.xz
+wget github.com/filebot/filebot/raw/master/installer/portable/filebot.sh
+wget github.com/filebot/filebot/raw/master/installer/portable/update-filebot.sh
+chmod u+x filebot.sh update-filebot.sh
+wget github.com/filebot/filebot/raw/master/lib/native/linux-armv7l/fpcalc
+wget github.com/filebot/filebot/raw/master/lib/native/linux-armv7l/lib7-Zip-JBinding.so
+wget github.com/filebot/filebot/raw/master/lib/native/linux-armv7l/libjnidispatch.so
+wget github.com/filebot/filebot/raw/master/lib/native/linux-armv7l/libmediainfo.so
+wget github.com/filebot/filebot/raw/master/lib/native/linux-armv7l/libzen.so
 sudo apt-get -y install libmediainfo0 libchromaprint-tools
 
 sudo apt-get -y install amule amule-daemon

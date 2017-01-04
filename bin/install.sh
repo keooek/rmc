@@ -61,6 +61,7 @@ sudo apt-get -y --purge remove kodi kodi.bin
 rm -rf ~/.kodi ; mkdir ~/.kodi
 sudo apt-get -y install kodi
 tar zxvf $rmc_base/templates/kodi.tgz -C ~/
+find ~/.kodi -type f -exec sedeasy '/RMC/' '/media/MULTIMEDIA/' {} \;
 
 sudo apt-get install python-pip
 sudo pip install --upgrade setuptools

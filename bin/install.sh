@@ -57,7 +57,10 @@ if [ -z "$(unrar |grep freeware)" ] ; then
  sudo dpkg -i unrar*deb
 fi
 
+sudo apt-get -y --purge remove kodi
+rm -rf ~/.kodi ; cd ~ ; mkdir ~/.kodi
 sudo apt-get -y install kodi
+tar zxvf $rmc_base/templates/kodi.tgz
 
 sudo apt-get install python-pip
 sudo pip install --upgrade setuptools
@@ -91,13 +94,12 @@ a="Port $rmc_sed_sshd_port"; b="/etc/ssh/sshd_config"; [ -z "$(grep "$a" $b)" ] 
 
 rm -rf ~/aMule
 mkdir -p ~/.aMule
-mkdir -p ~/.kodi/userdata
 
 cp $rmc_base/templates/transmission_settings.json.template $rmc_base/etc/transmission_settings.json
 cp $rmc_base/templates/amule.conf.template ~/.aMule/amule.conf
 cp $rmc_base/templates/crontab.template $rmc_base/tmp/crontab.in
 cp $rmc_base/templates/flexget/* $rmc_base/sw/flexget
-cp $rmc_base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
+#cp $rmc_base/templates/sources.xml.template ~/.kodi/userdata/sources.xml
 sudo cp $rmc_base/templates/ssmtp.conf.template $rmc_base/tmp/ssmtp.conf
 
 #env|grep "rmc_"|sed 's/rmc_//' > $rmc_base/tmp/templates.tmp
@@ -145,7 +147,6 @@ cp $rmc_base/etc/transmission_settings.json $rmc_base/sw/transmission/settings.j
 mkdir -p ~/.config/autostart
 cp $rmc_base/templates/kodi.desktop ~/.config/autostart
 
-rm -rf ~/.kodi ; cd ~ ; tar zxvf $rmc_base/templates/kodi.tgz
 
 sed -i 's/export rmc_sed_/#export rmc_sed_/' $rmc_base/etc/media-center-config
 

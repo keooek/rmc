@@ -17,7 +17,7 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*
 #Books
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $rmc_base_hd_input/BOOKS \;
 #Custom
-find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
+find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
 rename 'y/A-Z/a-z/' $rmc_base_hd_input/ALL/*.RAR $rmc_base_hd_input/ALL/*.ZIP
 for z in $(ls -1t $rmc_base_hd_input/*.rar 2> /dev/null|grep -v ":") ; do

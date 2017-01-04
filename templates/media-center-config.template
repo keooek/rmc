@@ -16,7 +16,7 @@ export rmc_kodi_ip="$rmc_lan_ip:8080"
 export rmc_base_books="$rmc_base_hd_input/BOOKS"
 export rmc_notify_mail="xxxxxx@gmail.com"     #Email to recieve notifications, recommended create an account only for rmc
 export rmc_kindle_mail="xxxxxx@kindle.com"
-export rmc_others_filter="filter1"
+export rmc_sed_others_filter="filter1"
 #Crontab
 export rmc_flexget_bin="/usr/local/bin"
 #Transmission

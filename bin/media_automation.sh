@@ -21,7 +21,7 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' 
 #Audio
 cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' *.rar *.zip
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
- if [ ! -z $(unrar lt "$rmc_base_hd_input/ALL/$z" | egrep -i '(.mp3|.MP3)' ) ] ; then
+ if [ "$(unrar lt "$rmc_base_hd_input/ALL/$z" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
   mkdir -p "$rmc_base_hd_audio/$(basename $z)"
   unrar x "$rmc_base_hd_input/ALL/$z" "$rmc_base_hd_audio/$(basename $z)"
   # If directory created has only one subdirectory and no other content, move the content one level before
@@ -32,7 +32,7 @@ for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ;
  fi
 done
 for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ; do
- if [ ! -z $(unzip -l "$rmc_base_hd_input/ALL/$y" | egrep -i '(.mp3|.MP3)' ) ] ; then
+ if [ "$(unzip -l "$rmc_base_hd_input/ALL/$y" | egrep -i '(.mp3|.MP3)' )" -gt 0 ] ; then
   mkdir -p "$rmc_base_hd_audio/$(basename $y)"
   unzip "$rmc_base_hd_input/ALL/$y" -d "$rmc_base_hd_audio/$(basename $y)"
   # If directory created has only one subdirectory and no other content, move the content one level before

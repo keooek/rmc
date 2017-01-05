@@ -23,7 +23,7 @@ cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' 
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$z $rmc_base_hd_input/AUDIO
  if [ "$(unrar lt "$rmc_base_hd_input/AUDIO/$z" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/$(basename $z .rar)"
+  mkdir -p "$rmc_base_hd_audio/UNCATALOGUED/$(basename $z .rar)"
   unrar x -y "$rmc_base_hd_input/AUDIO/$z" "$rmc_base_hd_audio/UNCATALOGUED/$(basename $z .rar)"
   # If directory created has only one subdirectory and no other content, move the content one level before
   if [ "$(find "$rmc_base_hd_audio/UNCATALOGUED/$(basename $z .rar)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/UNCATALOGUED/$(basename $z .rar)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
@@ -35,7 +35,7 @@ done
 for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$z $rmc_base_hd_input/AUDIO
  if [ "$(unzip -l "$rmc_base_hd_input/AUDIO/$y" | egrep -i '(.mp3|.MP3)' )" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/$(basename $yi .zip)"
+  mkdir -p "$rmc_base_hd_audio/UNCATALOGUED/$(basename $yi .zip)"
   unzip -o "$rmc_base_hd_input/AUDIO/$y" -d "$rmc_base_hd_audio/UNCATALOGUED/$(basename $y .zip)"
   # If directory created has only one subdirectory and no other content, move the content one level before
   if [ "$(find "$rmc_base_hd_audio/UNCATALOGUED/$(basename $y .zip)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/UNCATALOGUED/$(basename $y .zip)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then

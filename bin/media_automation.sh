@@ -19,8 +19,8 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec
 #Custom
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
-cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP
-for z in $(ls -1t "$rmc_base_hd_input/ALL/*.rar" 2> /dev/null|grep -v ":") ; do
+cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename ' ' '_' *.rar *.zip
+for z in $(ls -1t $rmc_base_hd_input/ALL/*.rar 2> /dev/null|grep -v ":") ; do
  if [ ! -z $(unrar lt "$rmc_base_hd_input/ALL/$z" | egrep -i '(.mp3|.MP3)' ) ] ; then
   mkdir -p "$rmc_base_hd_audio/$(basename $z)"
   unrar x "$rmc_base_hd_input/ALL/$z" "$rmc_base_hd_audio/$(basename $z)"
@@ -31,7 +31,7 @@ for z in $(ls -1t "$rmc_base_hd_input/ALL/*.rar" 2> /dev/null|grep -v ":") ; do
   fi
  fi
 done
-for y in $(ls -1t "$rmc_base_hd_input/ALL/*.zip" 2> /dev/null|grep -v ":") ; do
+for y in $(ls -1t $rmc_base_hd_input/ALL/*.zip 2> /dev/null|grep -v ":") ; do
  if [ ! -z $(unzip -l "$rmc_base_hd_input/ALL/$y" | egrep -i '(.mp3|.MP3)' ) ] ; then
   mkdir -p "$rmc_base_hd_audio/$(basename $y)"
   unzip "$rmc_base_hd_input/ALL/$y" -d "$rmc_base_hd_audio/$(basename $y)"

@@ -23,7 +23,7 @@ cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' 
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
  if [ "$(unrar lt "$rmc_base_hd_input/ALL/$z" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
   mkdir -p "$rmc_base_hd_audio/$(basename $z .rar)"
-  unrar x "$rmc_base_hd_input/ALL/$z" "$rmc_base_hd_audio/$(basename $z)"
+  unrar x "$rmc_base_hd_input/ALL/$z" "$rmc_base_hd_audio/$(basename $z .rar)"
   # If directory created has only one subdirectory and no other content, move the content one level before
   if [ "$(find "$rmc_base_hd_audio/$(basename $z .rar)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/$(basename $z .rar)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
    mv "$rmc_base_hd_audio/$(basename $z .rar)/*" $rmc_base_hd_audio

@@ -19,7 +19,7 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec
 #Custom
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
-rename 'y/A-Z/a-z/' $rmc_base_hd_input/ALL/*.RAR $rmc_base_hd_input/ALL/*.ZIP
+cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP
 for z in $(ls -1t $rmc_base_hd_input/*.rar 2> /dev/null|grep -v ":") ; do
  if [ ! -z $(unrar lt $rmc_base_hd_input/$z | egrep -i '(.mp3|.MP3)' ) ] ; then
   mkdir -p $rmc_base_hd_input/AUDIO/$(basename $z)

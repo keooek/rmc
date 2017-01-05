@@ -12,41 +12,50 @@
 
 
 #Reorg downloaded mixed torrents in ALL y AMULE folder
-#TVShows EN
-find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-EN \;
 #Books
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec mv -vf {} $rmc_base_hd_input/BOOKS \;
 #Custom
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
 cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' *.rar *.zip
+ ##Audio Rar files
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$z $rmc_base_hd_input/AUDIO
  if [ "$(unrar lt "$rmc_base_hd_input/AUDIO/$z" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)"
-  unrar x -y "$rmc_base_hd_input/AUDIO/$z" "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)"
+  mkdir -p "$rmc_base_hd_input/AUDIO/$(basename $z .rar)"
+  unrar x -y "$rmc_base_hd_input/AUDIO/$z" "$rmc_base_hd_input/AUDIO/$(basename $z .rar)"
   # If directory created has only one subdirectory and no other content, move the content one level before
-  if [ "$(find "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
-   mv "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)/*" $rmc_base_hd_audio
-   #rm -rf "$rmc_base_hd_audio/UNCATALOGED/$(basename $z .rar)"
+  if [ "$(find "$rmc_base_hd_input/AUDIO/$(basename $z .rar)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_input/AUDIO/$(basename $z .rar)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv "$rmc_base_hd_input/AUDIO/$(basename $z .rar)/*" $rmc_base_hd_input/AUDIO/ 
+   #rm -rf "$rmc_base_hd_input/AUDIO/$(basename $z .rar)"
   fi
  fi
 done
+ ##Audio zip files
 for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$z $rmc_base_hd_input/AUDIO
  if [ "$(unzip -l "$rmc_base_hd_input/AUDIO/$y" | egrep -i '(.mp3|.MP3)' )" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/UNCATALOGED/$(basename $yi .zip)"
-  unzip -o "$rmc_base_hd_input/AUDIO/$y" -d "$rmc_base_hd_audio/UNCATALOGED/$(basename $y .zip)"
+  mkdir -p "$rmc_base_hd_input/AUDIO/$(basename $yi .zip)"
+  unzip -o "$rmc_base_hd_input/AUDIO/$y" -d "$rmc_base_hd_input/AUDIO/$(basename $y .zip)"
   # If directory created has only one subdirectory and no other content, move the content one level before
-  if [ "$(find "$rmc_base_hd_audio/UNCATALOGED/$(basename $y .zip)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/UNCATALOGED/$(basename $y .zip)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
-   mv "$rmc_base_hd_audio/UNCATALOGED/$(basename $y .zip)/*" $rmc_base_hd_audio
-   #rm -rf "$rmc_base_hd_audio/UNCATALOGED/$(basename $y .zip)"
+  if [ "$(find "$rmc_base_hd_input/AUDIO/$(basename $y .zip)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_input/AUDIO/$(basename $y .zip)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv "$rmc_base_hd_input/AUDIO/$(basename $z .zip)/*" $rmc_base_hd_input/AUDIO/
+   #rm -rf "$rmc_base_hd_input/AUDIO/$(basename $y .zip)"
   fi
  fi
-find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 done
+ ##Audio directories
+for d in $(find $rmc_base_hd_input/ALL/ -mindepth 1 -maxdepth 1 -type d) ; do
+ if [ "$(find "$d" -type f -printf 1 -name "*.mp3" | wc -m)" -gt 0 ]; then
+   mv $d $rmc_base_hd_input/AUDIO/
+ fi
+done
+ ##Audio files alone
+find $rmc_base_hd_input/ALL -maxdepth 1 -name "*.mp3" -name "*.MP3" -name "*.Mp3" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 #PS3
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $rmc_base_hd_input/PS3 \;
+#TVShows EN
+find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[sS][0-3][0-9][eE][0-3][0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-EN \;
 #TVShows SP
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[0-2]?[0-9]x[0-2][0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-SP \;
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[Cc]ap.*[^0-9][0-9]x?[0-2][0-9][^0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-SP \;

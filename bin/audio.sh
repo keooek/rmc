@@ -1,10 +1,10 @@
 #!/bin/bash -xv
 
-for d in $(find $rmc_base_hd_audio/UNCATALOGED/ -mindepth 1 -maxdepth 1 -type d) ; do 
+for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d) ; do 
  cd $rmc_base/sw/filebot ; filebot.sh --action test --output "$rmc_base_hd_audio/UNCATALOGED" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={artist}/{album}/{artist}-{album}-{pi}-{t}"
  #[ -d "$d" ] && rm -rf $d
 done
-for f in $(find $rmc_base_hd_audio/UNCATALOGED/ -mindepth 1 -maxdepth 1 -type f) ; do
+for f in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type f -name "*.mp3") ; do
  cd $rmc_base/sw/filebot ; filebot.sh --action test --output "$rmc_base_hd_audio/UNCATALOGED" -script fn:amc $f --conflict override -non-strict --def music=y "musicFormat={artist}-{album}-{pi}-{t}"
  #[ -d "$d" ] && rm -rf $d
 done

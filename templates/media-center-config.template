@@ -16,9 +16,12 @@ export rmc_kodi_ip="$rmc_lan_ip:8080"
 export rmc_base_books="$rmc_base_hd_input/BOOKS"
 export rmc_notify_mail="xxxxxx@gmail.com"     #Email to recieve notifications, recommended create an account only for rmc
 export rmc_kindle_mail="xxxxxx@kindle.com"
-export rmc_sed_others_filter="filter1"
 #Crontab
 export rmc_flexget_bin="/usr/local/bin"
+#Filter media_automation
+export rmc_sed_others_filter="filter1"
+#Flexget
+export rmc_sed_base_hd_input="$rmc_base_hd_input"
 #Transmission
 export rmc_sed_transmission_tmp="$rmc_base_hd_input/TORRENT_TMP"
 export rmc_sed_transmission_out="$rmc_base_hd_input/ALL"

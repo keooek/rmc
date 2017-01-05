@@ -22,23 +22,23 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' 
 cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' *.rar *.zip
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
  if [ "$(unrar lt "$rmc_base_hd_input/ALL/$z" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/$(basename $z)"
+  mkdir -p "$rmc_base_hd_audio/$(basename $z .rar)"
   unrar x "$rmc_base_hd_input/ALL/$z" "$rmc_base_hd_audio/$(basename $z)"
   # If directory created has only one subdirectory and no other content, move the content one level before
-  if [ "$(find "$rmc_base_hd_audio/$(basename $z)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/$(basename $z)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
-   mv "$rmc_base_hd_audio/$(basename $z)/*" $rmc_base_hd_audio
-   #rm -rf "$rmc_base_hd_audio/$(basename $z)"
+  if [ "$(find "$rmc_base_hd_audio/$(basename $z .rar)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/$(basename $z .rar)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv "$rmc_base_hd_audio/$(basename $z .rar)/*" $rmc_base_hd_audio
+   #rm -rf "$rmc_base_hd_audio/$(basename $z .rar)"
   fi
  fi
 done
 for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ; do
  if [ "$(unzip -l "$rmc_base_hd_input/ALL/$y" | egrep -i '(.mp3|.MP3)' )" -gt 0 ] ; then
-  mkdir -p "$rmc_base_hd_audio/$(basename $y)"
-  unzip "$rmc_base_hd_input/ALL/$y" -d "$rmc_base_hd_audio/$(basename $y)"
+  mkdir -p "$rmc_base_hd_audio/$(basename $yi .zip)"
+  unzip "$rmc_base_hd_input/ALL/$y" -d "$rmc_base_hd_audio/$(basename $y .zip)"
   # If directory created has only one subdirectory and no other content, move the content one level before
-  if [ "$(find "$rmc_base_hd_audio/$(basename $y)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/$(basename $y)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
-   mv "$rmc_base_hd_audio/$(basename $y)/*" $rmc_base_hd_audio
-   #rm -rf "$rmc_base_hd_audio/$(basename $y)"
+  if [ "$(find "$rmc_base_hd_audio/$(basename $y .zip)" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_audio/$(basename $y .zip)" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
+   mv "$rmc_base_hd_audio/$(basename $y .zip)/*" $rmc_base_hd_audio
+   #rm -rf "$rmc_base_hd_audio/$(basename $y .zip)"
   fi
  fi
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(MP3\|mp3\).*' ! -name "*.avi" ! -name "*.mkv" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;

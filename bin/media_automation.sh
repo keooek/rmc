@@ -17,7 +17,7 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*mobi' -o -regex '.*epub' -exec
 #Custom
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\($rmc_sed_others_filter\).*' -exec mv -vf {} $rmc_base_hd_input/OTHERS \;
 #Audio
-cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP ; rename 's/ /_/g' *.rar *.zip
+cd $rmc_base_hd_input/ALL/ ; rename 'y/A-Z/a-z/' *.RAR *.ZIP *.MP3 *.Mp3; rename 's/ /_/g' *.rar *.zip *.mp3
  ##Audio Rar files
 for z in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.rar 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$z $rmc_base_hd_input/AUDIO
@@ -52,7 +52,6 @@ for d in $(find $rmc_base_hd_input/ALL/ -mindepth 1 -maxdepth 1 -type d) ; do
  fi
 done
  ##Audio files alone
-rename 's/ /_/g' *.mp3
 find $rmc_base_hd_input/ALL -maxdepth 1 -name "*.mp3" -name "*.MP3" -name "*.Mp3" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 #PS3
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $rmc_base_hd_input/PS3 \;

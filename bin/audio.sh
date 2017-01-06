@@ -20,6 +20,7 @@ done
 #For regular files
 for f in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type f -name "*.mp3") ; do
  cd $rmc_base/sw/filebot ; filebot.sh --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $f --conflict override -non-strict --def music=y "musicFormat={artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
+ mv $f $rmc_base_hd_input/AUDIO_PROCESSED
  #[ -d "$d" ] && rm -rf $d
 done
 

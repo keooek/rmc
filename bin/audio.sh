@@ -2,7 +2,8 @@
 
 action="copy"
 
-for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d) ; do 
+#For directories
+for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -name tmp ) ; do 
  rm -rf $rmc_base_hd_input/AUDIO/tmp/*
  cd $rmc_base/sw/filebot ; filebot.sh --action $action --output "$rmc_base_hd_input/AUDIO/tmp" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={artist}/{album}/{artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
  # If directory created has only one subdirectory and no other content, then it's a one artist album, if not it's a compilation
@@ -15,6 +16,8 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d) ; do
  fi
  #[ -d "$d" ] && rm -rf $d
 done
+
+#For regular files
 for f in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type f -name "*.mp3") ; do
  cd $rmc_base/sw/filebot ; filebot.sh --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $f --conflict override -non-strict --def music=y "musicFormat={artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
  #[ -d "$d" ] && rm -rf $d

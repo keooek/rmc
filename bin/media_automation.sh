@@ -52,7 +52,7 @@ for d in $(find $rmc_base_hd_input/ALL/ -mindepth 1 -maxdepth 1 -type d) ; do
  fi
 done
  ##Audio files alone
-find $rmc_base_hd_input/ALL -maxdepth 1 -name "*.mp3" -o -name "*.MP3" -o -name "*.Mp3" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
+find $rmc_base_hd_input/ALL -maxdepth 1 -name "*.mp3" -exec mv -vf {} $rmc_base_hd_input/AUDIO \;
 #PS3
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(PS3\|ps3\).*' -exec mv -vf {} $rmc_base_hd_input/PS3 \;
 #TVShows EN

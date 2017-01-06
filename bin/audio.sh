@@ -12,7 +12,7 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
   mv ${d}* $rmc_base_hd_input/AUDIO_PROCESSED
  else
   rm -rf $rmc_base_hd_input/AUDIO/tmp/*
-  cd $rmc_base/sw/filebot ; filebot.sh --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat=/{album}/{media.TrackPosition.pad(2)}-{artist}-{t}"
+  cd $rmc_base/sw/filebot ; filebot.sh --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={album}/{media.TrackPosition.pad(2)}-{artist}-{t}"
  fi
  #[ -d "$d" ] && rm -rf $d
 done

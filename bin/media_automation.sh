@@ -82,7 +82,7 @@ mv -vf $rmc_base_hd_input/ALL/* $rmc_base_hd_input/SKIPPED
 [[ $(find $rmc_base_hd_input/BOOKS -type f -size -20M ) ]] && $rmc_base/bin/books.sh
 
 find $rmc_logs -type f -mtime +60 -exec rm {} \;
-find $rmc_base_hd_input/AUDIO_PROCESSED -mtime +5 -exec rm {} \;
+find $rmc_base_hd_input/AUDIO_PROCESSED -mtime +5 -exec rm -rf {} \;
 
 #flexget series forget "The Strain"
 

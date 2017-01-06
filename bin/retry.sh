@@ -15,6 +15,6 @@ find $rmc_base_hd_input/SKIPPED -maxdepth 1 -regex '.*\(panish\|astellano\|spa.o
 find $rmc_base_hd_input/SKIPPED -maxdepth 1 -regex '.*\(1080p\|720p\).*' -exec mv {} $rmc_base_hd_input/MOVIES-EN \;
 
 #Purgar el lock por si se queda pillado
-rm -f /home/pi/.flexget/.config-lock
+rm -f $rmc_base/sw/flexget/.config-lock
 
 exit 0

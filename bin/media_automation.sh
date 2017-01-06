@@ -78,6 +78,7 @@ mv -vf $rmc_base_hd_input/ALL/* $rmc_base_hd_input/SKIPPED
 [[ $(find $rmc_base_hd_input/MOVIES-EN -type f -size +150M) ]] && $rmc_base/bin/movies-en.sh
 [[ $(find $rmc_base_hd_input/TVSHOWS-SP -type f -size +100M) ]] && $rmc_base/bin/tvshows-sp.sh
 [[ $(find $rmc_base_hd_input/MOVIES-SP -type f -size +150M) ]] && $rmc_base/bin/movies-sp.sh
+[[ $(find $rmc_base_hd_input/AUDIO -type f -size +1M) ]] && $rmc_base/bin/audio.sh
 [[ $(find $rmc_base_hd_input/BOOKS -type f -size -20M ) ]] && $rmc_base/bin/books.sh
 
 find $rmc_logs -type f -mtime +60 -exec rm {} \;

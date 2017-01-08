@@ -18,7 +18,7 @@ killall amuled amuleweb transmission-daemon forever_amule.sh forever_transmissio
 sudo mkdir -p $rmc_base_hd_input 
 sudo chown pi:pi $rmc_base_hd_input
 cd $rmc_base_hd_input
-mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP AUDIO AUDIO_PROCESSED OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
+mkdir ALL AMULE AMULE_TMP BOOKS BOOKS_PROCESSED MOVIES-EN MOVIES-SP AUDIO AUDIO/tmp AUDIO_PROCESSED OTHERS SHARE SKIPPED TORRENT_INCOMING TORRENT_TMP TVSHOWS-EN TVSHOWS-SP
 mkdir -p $rmc_base/sw/flexget $rmc_base/log $rmc_base/tmp
 sudo mkdir -p $rmc_base_hd_video
 sudo chown pi:pi $rmc_base_hd_video

@@ -1,6 +1,7 @@
 #!/bin/bash -xv
 
 action="copy"
+date_str="$(date +%Y%m%d-%H_%M_%S)"
 
 #For directories
 for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -name tmp ) ; do 

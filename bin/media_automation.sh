@@ -10,6 +10,7 @@
 # exit 0
 #fi
 
+cd $rmc_base_hd_input/ALL/ ; rename 's/ /_/g' *
 
 #Reorg downloaded mixed torrents in ALL y AMULE folder
 #Books
@@ -46,7 +47,6 @@ for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ;
 done
  ##Audio directories
 for d in $(find $rmc_base_hd_input/ALL/ -mindepth 1 -maxdepth 1 -type d) ; do
- cd $rmc_base_hd_input/ALL/ ; rename 's/ /_/g' $d
  if [ "$(find "$d" -type f -name "*.mp3" -printf 1 | wc -m)" -gt 0 ]; then
    mv $d $rmc_base_hd_input/AUDIO/
  fi

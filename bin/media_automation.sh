@@ -47,7 +47,7 @@ done
  ##Audio directories
 for d in $(find $rmc_base_hd_input/ALL/ -mindepth 1 -maxdepth 1 -type d) ; do
  cd $rmc_base_hd_input/ALL/ ; rename 's/ /_/g' $d
- if [ "$(find "$d" -type f -printf 1 -name "*.mp3" | wc -m)" -gt 0 ]; then
+ if [ "$(find "$d" -type f -name "*.mp3" -printf 1 | wc -m)" -gt 0 ]; then
    mv $d $rmc_base_hd_input/AUDIO/
  fi
 done

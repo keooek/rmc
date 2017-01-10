@@ -10,6 +10,7 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
  # If directory created has only one subdirectory and no other content, then it's a one artist album, if not it's a compilation
  if [ "$(find "$rmc_base_hd_input/AUDIO/tmp/" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_input/AUDIO/tmp/" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
   cp -vrf $rmc_base_hd_input/AUDIO/tmp/* "$rmc_base_hd_audio/UNCATALOGED/"
+  rm -rf $rmc_base_hd_input/AUDIO/tmp/*
   #[ ! -d "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ] && mv $rmc_base_hd_input/AUDIO/tmp/* $rmc_base_hd_audio/UNCATALOGED
   #[ -d "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ] && mv "$rmc_base_hd_input/AUDIO/tmp/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1)/*" "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ; rm -rf $rmc_base_hd_input/AUDIO/tmp/*
  else

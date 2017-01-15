@@ -27,7 +27,7 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
   fi
  fi
  rm -rf $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d)*
- [ -f "$d.*" ] && mv -v ${d} $rmc_base_hd_input/AUDIO_PROCESSED
+ [ ! -f "$d.*" ] && mv -v ${d} $rmc_base_hd_input/AUDIO_PROCESSED
  rm -rf ${d} ; mv -v ${d}.* $rmc_base_hd_input/AUDIO_PROCESSED
 done
 

@@ -17,7 +17,7 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
   rm -rf $rmc_base_hd_input/AUDIO/tmp/*
   filebot.sh --log all --log-file $rmc_logs/audio_dir_va_rename_${date_str}.txt --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={album}/{media.TrackPosition.pad(2)}-{artist}-{t}"
  fi
- [ ! -d $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d) ] && mv ${d} $rmc_base_hd_input/AUDIO_PROCESSED
+ [ ! -d $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d) ] && mv ${d} $rmc_base_hd_input/AUDIO_PROCESSED ; rm -f ${d}.*
  #[ -d "$d" ] && rm -rf $d
 done
 

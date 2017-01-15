@@ -1,6 +1,6 @@
 #!/bin/bash -xv
 
-action="copy"
+action="copy" #fallo filebot, aunque este en copy siempre renombra contenido del directorio
 date_str="$(date +%Y%m%d-%H_%M_%S)"
 
 #For directories
@@ -11,20 +11,19 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
  if [ "$(find "$rmc_base_hd_input/AUDIO/tmp/" -maxdepth 1 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_input/AUDIO/tmp/" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
   cp -vrf $rmc_base_hd_input/AUDIO/tmp/* "$rmc_base_hd_audio/UNCATALOGED/"
   rm -rf $rmc_base_hd_input/AUDIO/tmp/*
-  #[ ! -d "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ] && mv $rmc_base_hd_input/AUDIO/tmp/* $rmc_base_hd_audio/UNCATALOGED
-  #[ -d "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ] && mv "$rmc_base_hd_input/AUDIO/tmp/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1)/*" "$rmc_base_hd_audio/UNCATALOGED/$(cd $rmc_base_hd_input/AUDIO/tmp/; ls -1 )" ; rm -rf $rmc_base_hd_input/AUDIO/tmp/*
  else
-  rm -rf $rmc_base_hd_input/AUDIO/tmp/*
+  #rm -rf $rmc_base_hd_input/AUDIO/tmp/*
+  filebot -script fn:revert --action move $rmc_base_hd_input/AUDIO/tmp/*
+  exit 0
   filebot.sh --log all --log-file $rmc_logs/audio_dir_va_rename_${date_str}.txt --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={album}/{media.TrackPosition.pad(2)}-{artist}-{t}"
  fi
- [ ! -d $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d) ] && rm -rf $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d)*
- mv ${d} $rmc_base_hd_input/AUDIO_PROCESSED ; rm -f ${d}.*
- #[ -d "$d" ] && rm -rf $d
+ rm -rf $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d)*
+ [ -f "$d.*" ] && mv -v ${d} $rmc_base_hd_input/AUDIO_PROCESSED
+ rm -rf ${d} ; mv -v ${d}.* $rmc_base_hd_input/AUDIO_PROCESSED
 done
 
 #For regular files
 for f in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type f -name "*.mp3") ; do
  filebot.sh --log all --log-file $rmc_logs/audio_file_rename_${date_str}.txt --action $action --output "$rmc_base_hd_audio/UNCATALOGED/" -script fn:amc $f --conflict override -non-strict --def music=y "musicFormat={artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
- mv $f $rmc_base_hd_input/AUDIO_PROCESSED
- #[ -d "$d" ] && rm -rf $d
+ [ -f "$d" ] && mv $f $rmc_base_hd_input/AUDIO_PROCESSED
 done

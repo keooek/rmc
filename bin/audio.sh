@@ -18,7 +18,7 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
   #Si aun asi no se organiza se para de intentar ya que no parece un album corriente o un recopilatorio reconocido
   if [ "$(find "$rmc_base_hd_input/AUDIO/tmp/" -mindepth 1 -maxdepth 2 -type d -printf 1 | wc -m)" -eq 2 -a "$(find "$rmc_base_hd_input/AUDIO/tmp/" -maxdepth 1 ! -type d -printf 1 | wc -m)" -eq 0 ]; then
    filebot.sh -script fn:revert --action move $rmc_base_hd_input/AUDIO/tmp/*
-   mv $d $rmc_base_hd_input/AUDIO_PROCESSED
+   mv -v $d $rmc_base_hd_input/AUDIO_PROCESSED
   fi
  fi
  rm -rf $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d)*

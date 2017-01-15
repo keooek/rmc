@@ -8,7 +8,8 @@ for d in $(find $rmc_base_hd_input/AUDIO/ -mindepth 1 -maxdepth 1 -type d ! -nam
  rm -rf $rmc_base_hd_input/AUDIO/tmp/*
  filebot.sh --log all --log-file $rmc_logs/audio_dir_rename_${date_str}.txt --action $action --output "$rmc_base_hd_input/AUDIO/tmp" -script fn:amc $d --conflict override -non-strict --def music=y "musicFormat={artist}/{album}/{artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
  if [[ "$(grep -i "Failed to identify or process any files" $rmc_logs/audio_dir_rename_${date_str}.txt)" != "" ]] ; then
-  filebot.sh --log all --log-file $rmc_logs/audio_acoustid_${date_str}.txt -rename --output "$rmc_base_hd_audio/UNCATALOGED/" --db AcoustID "musicFormat={artist}/{album}/{artist}-{album}-{media.TrackPosition.pad(2)}-{t}"
+  filebot.sh --log all --log-file $rmc_logs/audio_acoustid_${date_str}.txt -rename --output "$rmc_base_hd_audio/UNCATALOGED/" --db AcoustID "musicFormat={artist}/{album}/{artist}-{album}-{media.TrackPosition.pad(2)}-{t}" 
+  exit 0
   rm -rf $rmc_base_hd_input/AUDIO_PROCESSED/$(basename $d)*
   [ ! -f "$d.*" ] && mv -v ${d} $rmc_base_hd_input/AUDIO_PROCESSED
   rm -rf ${d} ; mv -v ${d}.* $rmc_base_hd_input/AUDIO_PROCESSED

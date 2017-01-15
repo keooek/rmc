@@ -35,7 +35,7 @@ done
  ##Audio zip files
 for y in $(cd $rmc_base_hd_input/ALL/ ; ls -1t *.zip 2> /dev/null|grep -v ":") ; do
  mv $rmc_base_hd_input/ALL/$y $rmc_base_hd_input/AUDIO
- if [ "$(unzip -l "$rmc_base_hd_input/AUDIO/$y" | egrep -i '(.mp3|.MP3)' )" -gt 0 ] ; then
+ if [ "$(unzip -l "$rmc_base_hd_input/AUDIO/$y" | egrep -i '(.mp3|.MP3)'|wc -m)" -gt 0 ] ; then
   mkdir -p "$rmc_base_hd_input/AUDIO/$(basename $yi .zip)"
   unzip -o "$rmc_base_hd_input/AUDIO/$y" -d "$rmc_base_hd_input/AUDIO/$(basename $y .zip)"
   # If directory created has only one subdirectory and no other content, move the content one level before

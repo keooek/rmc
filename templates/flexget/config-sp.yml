@@ -21,4 +21,5 @@ tasks:
   tvshows_sp_divxatope:
     rss:
       url: http://divxatope1.com/feeds.xml
+      link: link
     template: tvshows_sp

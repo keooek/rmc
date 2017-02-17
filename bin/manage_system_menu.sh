@@ -21,7 +21,7 @@ while true; do
        echo "select language 1) English 2) Spanish"; read l; case $l in 1) language="English";; 2) language="Spanish";; esac
        echo "Enter TvShow: "; read tvshow
        $rmc_base/bin/manage_tvshows_not_delete.sh $action $language $tvshow;;
-    m) /home/pi/bin/local_system_menu.sh
+    m) /home/pi/bin/local_system_menu.sh;;
     q) exit;;
     *) invalid option;;
  esac

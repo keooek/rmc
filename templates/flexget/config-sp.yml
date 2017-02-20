@@ -7,7 +7,7 @@ templates:
         series_group_sp:
           quality: hdtv 720p
           ep_regexp:
-            - Cap.(\d+)(\d\d)
+            - Cap.(\d+)
     include: tvshows_spanish.yml
     regexp:
       accept:
@@ -18,8 +18,18 @@ templates:
 
 tasks:
 
+  tvshows_sp_newpct:
+    rss:
+      url: http://www.newpct1.com/feed
+      link:
+        - magneturi
+        - link
+    template: tvshows_sp
+
+
   tvshows_sp_divxatope:
     rss:
       url: http://divxatope1.com/feeds.xml
       link: link
     template: tvshows_sp
+

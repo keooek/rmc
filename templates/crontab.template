@@ -4,6 +4,6 @@ MAILTO=""
 */20 *	* * *	bash -lic '$rmc_base/bin/media_automation.sh > $rmc_logs/media_automation_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
 0 2	* * 1	bash -lic '$rmc_base/bin/clean_library_kodi.sh > $rmc_logs/clean_library_kodi_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
 
-20,50 *	* * *	bash -lic '$rmc_flexget_bin/flexget -c $rmc_base/sw/flexget/config-sp.yml -l $rmc_logs/flexget-sp.log -L verbose execute -v --tasks tvshows_sp_divxatope > $rmc_logs/tvshows_sp_divxatope_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
-10,40 *	* * *	bash -lic '$rmc_flexget_bin/flexget -c $rmc_base/sw/flexget/config-en.yml -l $rmc_logs/flexget-sp.log -L verbose execute -v --disable-tracking --tasks tvshows_en_rarbg > $rmc_logs/tvshows_en_rarbg_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
+20,50 * * * *   bash -lic '$rmc_flexget_bin/flexget -c $rmc_base/sw/flexget/config-sp.yml -l $rmc_logs/flexget-sp.log -L verbose execute -v --tasks tvshows_sp_newpct > $rmc_logs/flexget_tvshows_sp_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
+10,40 * * * *   bash -lic '$rmc_flexget_bin/flexget -c $rmc_base/sw/flexget/config-en.yml -l $rmc_logs/flexget-sp.log -L verbose execute -v --disable-tracking --tasks tvshows_en_rarbg > $rmc_logs/flexget_tvshows_en_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB
 @reboot	bash -lic '$rmc_base/bin/start_post_boot.sh > $rmc_logs/start_post_boot_$(date +\%Y\%m\%d-\%H_\%M_\%S).txt 2>&1'   #RMC_CRONTAB

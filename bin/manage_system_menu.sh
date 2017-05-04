@@ -23,7 +23,7 @@ while true; do
        $rmc_base/bin/manage_tvshows_not_delete.sh $action $language $tvshow;;
     m) /home/pi/bin/local_system_menu.sh;;
     q) exit;;
-    x) logout;;
+    x) pkill -9 -t $(echo $SSH_TTY|cut -d/ -f3,4);;
     *) invalid option;;
  esac
 done

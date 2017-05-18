@@ -3,7 +3,7 @@
 Please, install the latest full raspbian image from https://www.raspberrypi.org/downloads/raspbian/
 Configure network settings with static ip (recommended ethernet connection), enable ssh service.
 
-In order to get the more stable system the root file system should be in a hard driver, for this particular if you have an empty HD (delete all partitions before) use:
+In order to get the more stable system the root file system should be in a hard drive, for this particular if you have an empty HD (delete all partitions before) use:
 
 git clone https://github.com/adafruit/Adafruit-Pi-ExternalRoot-Helper
 

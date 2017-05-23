@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
- echo -e "Select: \n 1)Amule_Restart \n 2)Transmission_Restart \n 3)Kodi_Restart \n 4)Kodi_Stop \n 5)Kodi_Start \n 6)Init_0 \n 7)Init_6 \n 8)List automated tvshows spanish \n 9)List automated tvshows english \n a)Manage_tvshows.sh \n b)Manage_tvshows_not_delete.sh \n m)Local Menu \n q)quit \n x)Logout "
+ echo -e "Select: \n 1)Amule_Restart \n 2)Transmission_Restart \n 3)Kodi_Restart \n 4)Kodi_Stop \n 5)Kodi_Start \n 6)Init_0 \n 7)Init_6 \n 8)List automated tvshows spanish \n 9)List automated tvshows english \n a)Manage_tvshows.sh \n b)Manage_tvshows_not_delete.sh \n c) Wifi Scan \n d) Wifi connect \n m)Local Menu \n q)quit \n x)Logout "
  read n
  case $n in
     1) cd /home/pi/.aMule/;killall amuled;killall amuleweb;rm /home/pi/.aMule/{muleLock,statistics.dat};nohup /usr/bin/amuled & ;;
@@ -21,6 +21,8 @@ while true; do
        echo "select language 1) English 2) Spanish"; read l; case $l in 1) language="English";; 2) language="Spanish";; esac
        echo "Enter TvShow: "; read tvshow
        $rmc_base/bin/manage_tvshows_not_delete.sh $action $language $tvshow;;
+    c) sudo iwlist wlan0 scan |grep ESSID ;;
+    d) echo ;;
     m) /home/pi/bin/local_system_menu.sh;;
     q) exit;;
     x) pkill -9 -t $(echo $SSH_TTY|cut -d/ -f3,4);;

@@ -24,6 +24,7 @@ while true; do
     c) sudo iwlist wlan0 scan |grep ESSID ;;
     d) echo ;;
     g) /opt/andReceiver/start-andReceiver.sh ;;
+    h) pkill -f andReceiver.jar ;;
     m) /home/pi/bin/local_system_menu.sh;;
     q) exit;;
     s) sudo /etc/init.d/samba stop;;

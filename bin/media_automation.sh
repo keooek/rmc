@@ -65,6 +65,7 @@ find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*[^0-9][0-9]x*[0-2][0-9][^0-9].
 #find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*emporada.*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-SP \;
 #TVShows EN
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*S[0-3][0-9]E[0-3][0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-EN \;
+find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*S[0-3][0-9].*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-EN \;
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*eason.*' -exec mv -vf {} $rmc_base_hd_input/TVSHOWS-EN \;
 #Movies ES
 find $rmc_base_hd_input/ALL -maxdepth 1 -regex '.*\(panish\|astellano\|spa.ol\|PANISH\|ASTELLANO\|SPA.OL\).*' -exec mv -vf {} $rmc_base_hd_input/MOVIES-SP \;

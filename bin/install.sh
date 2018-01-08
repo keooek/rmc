@@ -149,7 +149,11 @@ cp $rmc_base/etc/transmission_settings.json $rmc_base/sw/transmission/settings.j
 mkdir -p ~/.config/autostart
 cp $rmc_base/templates/kodi.desktop ~/.config/autostart
 
-
 sed -i 's/export rmc_sed_/#export rmc_sed_/' $rmc_base/etc/media-center-config
+
+#https://wiki.archlinux.org/index.php/Bluetooth_headset
+sudo apt-get -y remove bluezalsa
+sudo apt-get -y install pulseaudio-module-bluetooth
+
 
 sudo reboot

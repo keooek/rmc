@@ -11,6 +11,8 @@ while true; do
  then
   echo "$(date): Reinicio amule" > $rmc_logs/forever_amuled_$(date +%Y%m%d-%H_%M_%S).txt 2>&1
   cd /home/pi/.aMule/
+  wget http://upd.emule-security.org/nodes.dat
+  wget http://upd.emule-security.org/server.met
   killall amuled
   killall amuleweb
   rm /home/pi/.aMule/{muleLock,statistics.dat}

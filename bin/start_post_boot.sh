@@ -3,6 +3,7 @@
 cd /home/pi/.aMule/
 wget http://upd.emule-security.org/nodes.dat
 wget http://upd.emule-security.org/server.met
+rm nodes.dat.* server.met.*
 killall amuled
 killall amuleweb
 rm /home/pi/.aMule/{muleLock,statistics.dat}

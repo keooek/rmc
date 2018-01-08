@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/bin/bash -xv
 
 sink="bluez_card.00_1D_43_AA_35_A7"
-changed_headset="no"; [[ ! -z "$(grep "ALSA:default"/home/pi/.kodi/userdata/guisettings.xml)" ]] && changed_headset="yes"
+changed_headset="no"; [[ ! -z "$(grep "ALSA:default" /home/pi/.kodi/userdata/guisettings.xml)" ]] && changed_headset="yes"
 changed_hdmi="no"; [[ ! -z "$(grep "PI:Both" /home/pi/.kodi/userdata/guisettings.xml)" ]] && changed_hdmi="yes"
 
 while true; do
+ if [[ ! -z $(pidof pulseaudio) && ! -z $(pidof kodi_v7.bin) ]] ; then
  if [[ "$(/usr/bin/pactl list cards short)" == *$sink* ]] ; then
   if [[ $changed_headset == "no" ]] ; then
    card="$(/usr/bin/pactl list cards short| grep $sink | cut -f1)"
@@ -19,6 +20,7 @@ while true; do
    changed_headset="no"
    changed_hdmi="yes" 
   fi
+ fi
  fi
  sleep 2
 done

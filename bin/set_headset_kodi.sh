@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 
 sink="bluez_card.00_1D_43_AA_35_A7"
 changed_headset="no"; [[ ! -z "$(grep "ALSA:default" ~/.kodi/userdata/guisettings.xml)" ]] && changed_headset="yes"

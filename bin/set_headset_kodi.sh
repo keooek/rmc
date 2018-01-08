@@ -1,4 +1,4 @@
-#!/bin/bash -xv
+#!/bin/bash
 
 while ! pid=$(pidof pulseaudio) ; do
  sleep 2

@@ -42,16 +42,16 @@ while true; do
     card="$(/usr/bin/pactl list cards short| grep $sink | cut -f1)"
     /usr/bin/pacmd set-card-profile $sink a2dp_sink
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.audiodevice", "value": "ALSA:default"}, "id": "mybash"}'
-    /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.fvolumelevel", "value": "0.960000"}, "id": "mybash"}'
-    /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "0.000000"}, "id": "mybash"}'
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audio.fvolumelevel", "value": "0.960000"}, "id": "mybash"}'
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "0.000000"}, "id": "mybash"}'
     changed_headset="yes"
     changed_hdmi="no"
    fi
   else
    if [[ $changed_hdmi == "no" ]] ; then
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.audiodevice", "value": "PI:Both"}, "id": "mybash"}'
-    /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.fvolumelevel", "value": "1.000000"}, "id": "mybash"}'
-    /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "10.000000"}, "id": "mybash"}'
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audio.fvolumelevel", "value": "1.000000"}, "id": "mybash"}'
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "10.000000"}, "id": "mybash"}'
     changed_headset="no"
     changed_hdmi="yes" 
    fi

@@ -16,6 +16,7 @@
 while ! pid=$(pidof pulseaudio) ; do
  sleep 2
 done
+sudo renice -20 -p $(pidof pulseaudio)
 #pulseaudio starts several times, take first daemon
 pid=$(awk -F " " '{print $1}' <<< $pid)
 user=`ps -p $pid -o user=`

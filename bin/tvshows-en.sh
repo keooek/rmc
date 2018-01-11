@@ -10,7 +10,7 @@ fi
 
 IFS=$'\n'
 date_str="$(date +%Y%m%d-%H_%M_%S)"
-for j in $(find $rmc_base_hd_input/TVSHOWS-EN -type f -size +100M) ; do
+for j in $(find $rmc_base_hd_input/TVSHOWS-EN -type f -size +90M) ; do
  filebot.sh -non-strict --log all --log-file $rmc_logs/tvshowsen_rename_${date_str}.txt --lang en --format "$rmc_base_hd_video/TVSHOWS-EN/{n}/T{s}/{n}-{s00e00}-{t}" -rename "$j" --conflict override --db TheTVDB
 done
 unset IFS

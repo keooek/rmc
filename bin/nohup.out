@@ -1,0 +1,57 @@
+1832 (process ID) old priority -20, new priority -20
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   227  100    83  100   144    444    771 --:--:-- --:--:-- --:--:--   778100   227  100    83  100   144    435    756 --:--:-- --:--:-- --:--:--   761
+{"error":{"code":-32602,"message":"Invalid params."},"id":"mybash","jsonrpc":"2.0"}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   192  100    45  100   147   2752   8993 --:--:-- --:--:-- --:--:-- 10500
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   123  100    36  100    87    380    920 --:--:-- --:--:-- --:--:--   956
+{"id":1,"jsonrpc":"2.0","result":96}1832 (process ID) old priority -20, new priority -20
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   187  100    45  100   142   1879   5930 --:--:-- --:--:-- --:--:--  6454
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   192  100    45  100   147   2268   7411 --:--:-- --:--:-- --:--:-- 11307
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   123  100    36  100    87   2483   6000 --:--:-- --:--:-- --:--:--  6692
+{"id":1,"jsonrpc":"2.0","result":96}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   188  100    45  100   143   2744   8722 --:--:-- --:--:-- --:--:-- 11000
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   187  100    45  100   142   1958   6180 --:--:-- --:--:-- --:--:--  7473
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   125  100    37  100    88   1503   3576 --:--:-- --:--:-- --:--:--  3826
+{"id":1,"jsonrpc":"2.0","result":100}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   187  100    45  100   142    625   1973 --:--:-- --:--:-- --:--:--  2028
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   192  100    45  100   147   2934   9584 --:--:-- --:--:-- --:--:-- 12250
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   123  100    36  100    87   2081   5029 --:--:-- --:--:-- --:--:--  5800
+{"id":1,"jsonrpc":"2.0","result":96}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   188  100    45  100   143   1201   3817 --:--:-- --:--:-- --:--:--  4085
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   187  100    45  100   142   4794  15128 --:--:-- --:--:-- --:--:-- 17750
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   125  100    37  100    88   1942   4619 --:--:-- --:--:-- --:--:--  5500
+{"id":1,"jsonrpc":"2.0","result":100}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   187  100    45  100   142    718   2267 --:--:-- --:--:-- --:--:--  2366
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   192  100    45  100   147   4588  14989 --:--:-- --:--:-- --:--:-- 18375
+{"id":"mybash","jsonrpc":"2.0","result":true}  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   123  100    36  100    87   3908   9446 --:--:-- --:--:-- --:--:-- 10875
+{"id":1,"jsonrpc":"2.0","result":96}

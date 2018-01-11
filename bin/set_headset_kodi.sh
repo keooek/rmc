@@ -42,6 +42,7 @@ while true; do
    if [[ $changed_headset == "no" ]] ; then
     card="$(/usr/bin/pactl list cards short| grep $sink | cut -f1)"
     /usr/bin/pacmd set-card-profile $sink a2dp_sink
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.dspaddonsenabled", "value": true}, "id": "mybash"}'
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.audiodevice", "value": "ALSA:default"}, "id": "mybash"}'
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume":96}, "id": 1}'
     #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "0.000000"}, "id": "mybash"}'
@@ -50,6 +51,7 @@ while true; do
    fi
   else
    if [[ $changed_hdmi == "no" ]] ; then
+    #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.dspaddonsenabled", "value": false}, "id": "mybash"}'
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "audiooutput.audiodevice", "value": "PI:Both"}, "id": "mybash"}'
     /usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{"jsonrpc": "2.0", "method": "Application.SetVolume", "params": {"volume":100}, "id": 1}'
     #/usr/bin/curl -H 'content-type: application/json;' http://$rmc_kodi_ip/jsonrpc --data-binary '{ "jsonrpc": "2.0", "method": "Settings.SetSettingValue", "params":{"setting": "defaultvideosettings.volumeamplification", "value": "10.000000"}, "id": "mybash"}'

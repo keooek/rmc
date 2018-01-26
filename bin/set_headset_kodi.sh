@@ -61,4 +61,8 @@ while true; do
   fi
  fi
  sleep 2
+ if [[ "$(pacmd list-sinks |grep "fixed latency"| awk '{print $3}'|cut -c1)" == 5 ]] ; then
+  pactl suspend-sink 1 && pactl suspend-sink 0
+  sleep 2
+ fi
 done

@@ -25,7 +25,7 @@ export `strings /proc/$pid/environ | grep XDG_RUNTIME_DIR`
 export `strings /proc/$pid/environ | grep LANG`
 
 #list already paired devices here
-list_sink="bluez_card.00_1D_43_AA_35_A7 bluez_card.E9_08_EF_0A_33_24"
+list_sink="bluez_card.00_1D_43_AA_35_A7 bluez_card.E8_07_BF_10_C5_F0 bluez_card.E9_08_EF_0A_33_24"
 changed_headset="no"; [ ! -z "$(grep "ALSA:default" /home/pi/.kodi/userdata/guisettings.xml)" ] && changed_headset="yes"
 changed_hdmi="no"; [ ! -z "$(grep "PI:Both" /home/pi/.kodi/userdata/guisettings.xml)" ] && changed_hdmi="yes"
 

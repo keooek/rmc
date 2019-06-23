@@ -30,3 +30,5 @@ elif [[ $action == "Remove" && $language == "Spanish" && "$(grep -i "$tvshow" $f
  cat $file_sp
 fi
 
+scp $file_en pi@192.168.1.5:$file_en
+scp $file_sp pi@192.168.1.5:$file_sp
